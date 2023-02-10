@@ -1,0 +1,54 @@
+.custom-checkbox{
+    appearance: none;
+    -webkit-appearance: none;
+    height: 2rem;
+    width: 2rem;
+    background-color: #e3e6e9;
+    border-radius: 5px;
+    cursor:pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.custom-checkbox::after{
+    font-family: "font Awesome 5 Free";
+    font-weight: 900;;
+    content: '\f00c';
+    font-size: 1.2rem;
+    color: white;
+    display: none;
+}
+
+.custom-checkbox:hover{
+    background-color: #dcdee1;
+    
+}
+
+.custom-checkbox:checked{
+    background-color: #4e54c8;
+}
+.custom-checkbox:checked::after{
+    display: block;
+}
+
+.btn-delete::before{
+    font-family: "font Awesome 5 Free";
+    font-weight: 900;;
+    content: '\f1f8';
+    margin-right: 0.5em;
+    color: #333333;
+}
+
+.btn-delete:hover::before{
+    color: #dc2626;
+}
+
+.btn-edit::before{
+    font-family: "font Awesome 5 Free";
+    font-weight: 900;;
+    content: '\f31c';
+    margin-right: 0.5em;
+    color: #333333;
+}

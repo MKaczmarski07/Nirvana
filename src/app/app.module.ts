@@ -10,6 +10,7 @@ import { NotebookComponent } from './notebook/notebook.component';
 import { FocusModeComponent } from './focus-mode/focus-mode.component';
 import { Title } from '@angular/platform-browser';
 import { HomeComponent } from './home/home.component';
+import { ItemComponent } from './todo/item/item.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     CalendarComponent,
     NotebookComponent,
     FocusModeComponent,
-    HomeComponent
+    HomeComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,

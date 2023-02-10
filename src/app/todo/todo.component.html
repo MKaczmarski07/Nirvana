@@ -1,4 +1,31 @@
-<div class="w-full h-full flex items-center">
-    <h1 class="text-3xl font-semibold text-center w-full">Work in progress...</h1>
+<div class="w-full h-full">
+
+    <div class="w-full bg-gradient-to-r from-[#4e54c8] to-[#8f94fb]
+    p-3">
+        <h1 class="text-3xl text-white mt-10">My Tasks</h1>
+        <p class="text-white">Friday, February 10</p>
     </div>
+
+    <div class="pl-3 pt-3">
+        <input
+        #newItem
+        type="text"
+        placeholder="Add new task"
+        (keyup.enter)="addItem(newItem.value); newItem.value = ''" 
+        class="bg-slate-100 placeholder:italic px-2 py-1 rounded border border-slate-300 focus:outline-none focus:border-[#4e54c8] focus:ring-[#4e54c8] focus:ring-1"
+        />
+    
+        <button (click)="addItem(newItem.value)"
+        class="bg-gradient-to-tr from-[#4e54c8] to-[#8f94fb] text-white px-3 py-1 rounded ml-3 font-semibold">
+        Add</button>
+    </div>
+    
+
+    <ul class="px-3">
+        <li *ngFor="let i of  allItems">
+            <app-item (remove)="removeItem(i)" [item]="i"></app-item>
+        </li>
+    </ul>
+    
+</div>
     

@@ -1,0 +1,24 @@
+<div class="flex px-2 py-2 bg-slate-100 mt-3 max-w-md rounded-[10px] justify-between">
+    <div class="flex">
+        <input [id]="item.description" type="checkbox" (change)="item.done = !item.done" [checked]="item.done" 
+        class="custom-checkbox"/>
+        <label class="cursor-pointer pl-3 text-[#333333]" [for]="item.description">{{item.description}}</label>
+    </div>
+    
+    <div  *ngIf="!editable">
+      <button class="btn-edit mx-3 text-[#333333]" (click)="editable = !editable">Edit</button>
+      <button class="btn-delete mr-3 text-[#333333] hover:text-red-600" (click)="remove.emit()">Delete</button>
+    </div>
+  
+
+    <!-- Shows only if user clicks Edit button -->
+  <div *ngIf="editable">
+    <input class="sm-text-input" placeholder="edit item" [value]="item.description" #editedItem (keyup.enter)="saveItem(editedItem.value)">
+
+    <div class="btn-wrapper">
+      <button class="btn" (click)="editable = !editable">Cancel</button>
+      <button class="btn btn-save" (click)="saveItem(editedItem.value)">Save</button>
+    </div>
+  </div>
+    
+  </div>
