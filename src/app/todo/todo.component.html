@@ -1,9 +1,9 @@
-<div class="w-full h-full">
+<div class="w-full h-full bg-[#f3f2f1]">
 
     <div class="w-full bg-gradient-to-r from-[#4e54c8] to-[#8f94fb]
     p-3">
         <h1 class="text-3xl text-white mt-10">My Tasks</h1>
-        <p class="text-white">Friday, February 10</p>
+        <p class="text-white">{{displayCurrentDate()}}</p>
     </div>
 
     <div class="pl-3 pt-3">
@@ -12,7 +12,7 @@
         type="text"
         placeholder="Add new task"
         (keyup.enter)="addItem(newItem.value); newItem.value = ''" 
-        class="bg-slate-100 placeholder:italic px-2 py-1 rounded border border-slate-300 focus:outline-none focus:border-[#4e54c8] focus:ring-[#4e54c8] focus:ring-1"
+        class="bg-white placeholder:italic px-2 py-1 rounded border border-slate-300 focus:outline-none focus:border-[#4e54c8] focus:ring-[#4e54c8] focus:ring-1"
         />
     
         <button (click)="addItem(newItem.value)"
@@ -22,7 +22,7 @@
     
 
     <ul class="px-3">
-        <li *ngFor="let i of  allItems">
+        <li *ngFor="let i of tasks">
             <app-item (remove)="removeItem(i)" [item]="i"></app-item>
         </li>
     </ul>

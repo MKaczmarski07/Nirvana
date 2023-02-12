@@ -1,14 +1,27 @@
-<div class="flex px-2 py-2 bg-slate-100 mt-3 max-w-md rounded-[10px] justify-between">
+<div class="flex px-2 py-2  mt-3 max-w-md rounded-[10px] justify-between relative shadow-md bg-white">
     <div class="flex">
         <input [id]="item.description" type="checkbox" (change)="item.done = !item.done" [checked]="item.done" 
         class="custom-checkbox"/>
         <label class="cursor-pointer pl-3 text-[#333333]" [for]="item.description">{{item.description}}</label>
     </div>
-    
-    <div  *ngIf="!editable">
-      <button class="btn-edit mx-3 text-[#333333]" (click)="editable = !editable">Edit</button>
-      <button class="btn-delete mr-3 text-[#333333] hover:text-red-600" (click)="remove.emit()">Delete</button>
+
+    <button class="btn-options" (click)="toggleOptions()">
+
+    </button>
+
+    <div *ngIf="isOpen" class="absolute min-w-10 flex flex-col bg-white p-3 items-start right-8 z-10 rounded shadow-md">
+      <button class="btn-edit text-[#333333]" (click)="editable = !editable">Edit task</button>
+      <button class="btn-delete text-red-600" (click)="remove.emit()">Delete task</button>
     </div>
+
+
+
+
+    
+    <!-- <div  *ngIf="!editable">
+      <button class="btn-edit mx-3 text-[#333333]" (click)="editable = !editable"></button>
+      <button class="btn-delete mr-3 text-[#333333] hover:text-red-600" (click)="remove.emit()"></button>
+    </div> -->
   
 
     <!-- Shows only if user clicks Edit button -->

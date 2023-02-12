@@ -8,14 +8,22 @@ import { Item } from '../item';
 })
 export class ItemComponent {
   editable = false;
+  isOpen = false;
 
   @Input() item!: Item;
   @Input() newItem!: string;
   @Output() remove = new EventEmitter<Item>();
 
+
+  
   saveItem(description: string) { 
     if (!description) return; 
     this.editable = false;
     this.item.description = description;
   }
+
+  toggleOptions() {
+    this.isOpen = !this.isOpen;
+  }
+
 }
