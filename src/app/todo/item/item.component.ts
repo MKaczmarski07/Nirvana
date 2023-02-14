@@ -24,6 +24,8 @@ export class ItemComponent {
 
   toggleOptions() {
     this.isOpen = !this.isOpen;
+    if (this.isOpen === true) {
+    }
   }
 
 }

@@ -1,37 +1,26 @@
-<div class="flex px-2 py-2  mt-3 max-w-md rounded-[10px] justify-between relative shadow-md bg-white">
-    <div class="flex">
-        <input [id]="item.description" type="checkbox" (change)="item.done = !item.done" [checked]="item.done" 
-        class="custom-checkbox"/>
-        <label class="cursor-pointer pl-3 text-[#333333]" [for]="item.description">{{item.description}}</label>
-    </div>
+<div class="flex px-2 py-2 mt-3 rounded-[10px] justify-between relative shadow-md bg-white">
+  <div>
+    <input [id]="item.description" type="checkbox" (change)="item.done = !item.done" [checked]="item.done" 
+      class="custom-checkbox "/>
+  </div>
+  <label *ngIf="!editable"
+     class="cursor-pointer w-full text-[#333333] h-6 pl-3 overflow-hidden text-ellipsis"  [for]="item.description">{{item.description}}</label>
 
-    <button class="btn-options" (click)="toggleOptions()">
+    <input *ngIf="editable"
+    class=" w-full bg-white placeholder:italic box-border ml-3 h-6 rounded border border-slate-300 focus:outline-none focus:border-[#4e54c8] focus:ring-[#4e54c8] focus:ring-1" placeholder="Edit task" [value]="item.description" #editedItem (keyup.enter)="saveItem(editedItem.value)">
+  
+    
 
-    </button>
+    
+    <button class="btn-options ml-3" (click)="toggleOptions()"></button>
+  
 
-    <div *ngIf="isOpen" class="absolute min-w-10 flex flex-col bg-white p-3 items-start right-8 z-10 rounded shadow-md">
-      <button class="btn-edit text-[#333333]" (click)="editable = !editable">Edit task</button>
+    <div *ngIf="isOpen" class="absolute min-w-10 flex flex-col bg-white p-3 items-start right-8 bottom-8 z-10 rounded shadow-md">
+      <button class="btn-edit text-[#333333]" (click)="editable = !editable; isOpen= false">Edit task</button>
       <button class="btn-delete text-red-600" (click)="remove.emit()">Delete task</button>
     </div>
 
-
-
-
-    
-    <!-- <div  *ngIf="!editable">
-      <button class="btn-edit mx-3 text-[#333333]" (click)="editable = !editable"></button>
-      <button class="btn-delete mr-3 text-[#333333] hover:text-red-600" (click)="remove.emit()"></button>
-    </div> -->
-  
-
-    <!-- Shows only if user clicks Edit button -->
-  <div *ngIf="editable">
-    <input class="sm-text-input" placeholder="edit item" [value]="item.description" #editedItem (keyup.enter)="saveItem(editedItem.value)">
-
-    <div class="btn-wrapper">
-      <button class="btn" (click)="editable = !editable">Cancel</button>
-      <button class="btn btn-save" (click)="saveItem(editedItem.value)">Save</button>
-    </div>
   </div>
-    
-  </div>
+
+
+   

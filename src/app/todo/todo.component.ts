@@ -13,6 +13,7 @@ export class TodoComponent implements OnInit {
   ) { }
 
   tasks: Item[] = [];
+  isOpen = false;
   
   ngOnInit() {
     this.titleService.setTitle('To Do');
@@ -55,6 +56,8 @@ export class TodoComponent implements OnInit {
     this.saveToLocalStorage()
     }
 
+  
+  
   
 
   

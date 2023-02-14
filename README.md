@@ -10,10 +10,10 @@
 - Adding user-written tasks
 - Saving tasks in the browser's memory, so that after refreshing the page everything is saved.
 - Deleting tasks
+- Editing existing tasks
 
 ## Future updates ⌛
 **To do list**
-- Editing existing tasks
 - Sorting
 
 **Calendar**
