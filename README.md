@@ -16,9 +16,6 @@
 **To do list**
 - Sorting
 
-**Calendar**
-- Integration with to do list
-
 **Notebook**
 - creating user-written notes
 - Basic text editing
