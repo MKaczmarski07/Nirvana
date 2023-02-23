@@ -9,6 +9,7 @@ import { Item } from '../item';
 export class ItemComponent {
   editable = false;
   isOpen = false;
+  fadeInOut = '';
 
   @Input() item!: Item;
   @Input() newItem!: string;
@@ -16,11 +17,14 @@ export class ItemComponent {
 
 
 
-  @HostListener('document:click', ['$event']) //Remove the dropdown menu when clicking outside of the item component
+  @HostListener('document:click', ['$event']) //Remove the dropdown menu when clicking outside of the item component 
   onClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
     if ((!target.closest('.item-componet'))) {
-      this.isOpen = false;
+      if (this.isOpen) { //Toggle the fade out animation only if the dropdown menu is open
+        this.isOpen = false;
+        this.fadeInOut = 'fadeOut';
+      }
       this.editable = false;
     }
   }
@@ -32,8 +36,13 @@ export class ItemComponent {
     this.item.description = description;
   }
 
-  toggleOptions() {
+  toggleOptions() { //Toggle the dropdown menu
     this.isOpen = !this.isOpen;
+    if (!this.isOpen) this.editable = false;
+
+    if (this.isOpen) { //Toggle the fade in/out animation
+      this.fadeInOut = 'fadeIn';
+    }else this.fadeInOut = 'fadeOut';
     
   }
 

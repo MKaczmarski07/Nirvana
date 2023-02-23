@@ -1,0 +1,66 @@
+
+@keyframes show {
+    0% {
+      height: 0;
+      overflow: hidden;
+    }
+    100% {
+      height: 3rem;
+      overflow: hidden;
+    }
+  }
+  
+.animate-show {
+    animation: show .5s ;
+    height: 3rem;
+  }
+
+
+@keyframes hide {
+    0% {
+      overflow: hidden;
+      height: 2.5rem;
+      
+    }
+    100% {
+      height: 0;
+      overflow: hidden;
+    }
+  }
+  
+.animate-hide {
+    animation: hide 0.5s ;
+    height: 0;
+    overflow: hidden;
+    
+  }
+
+  @keyframes rounding {
+    0% {
+        border-radius: 10px;
+    }
+    100% {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+  }
+
+  .animate-round{
+    animation: rounding .5s ;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  @keyframes rounding-back{
+    0% {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    100% {
+        border-radius: 10px;
+    }
+  }
+  .animate-round-back{
+    animation: rounding-back 1s;
+    
+  }

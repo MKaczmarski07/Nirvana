@@ -34,13 +34,6 @@
 }
 
 
-.btn-options::before{
-    font-family: "font Awesome 5 Free";
-    font-weight: 900;;
-    content: '\f142';
-    margin-right: 0.5em;
-    color: #333333;
-}
 
 
 @keyframes show {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Item } from './item';
 
@@ -13,7 +13,8 @@ export class TodoComponent implements OnInit {
   ) { }
 
   tasks: Item[] = [];
-  isOpen = false;
+  dropdownOpen = false;
+  fadeInOut = '';
   
   ngOnInit() {
     this.titleService.setTitle('To Do');
@@ -25,7 +26,7 @@ export class TodoComponent implements OnInit {
     
   }
 
-   displayCurrentDate(): string {
+  displayCurrentDate(): string {
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const monthsOfYear = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   
@@ -35,7 +36,13 @@ export class TodoComponent implements OnInit {
     const dayOfMonth = date.getDate();
   
     return `${dayOfWeek}, ${month} ${dayOfMonth}`;
-   }
+  }
+
+
+  
+  saveToLocalStorage() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
   
   addItem(description: string) {
     if (!description) return; // new description can't be an empty string
@@ -47,17 +54,39 @@ export class TodoComponent implements OnInit {
     this.saveToLocalStorage()
   }
 
-  saveToLocalStorage() {
-    localStorage.setItem('tasks', JSON.stringify(this.tasks));
-  }
-  
   removeItem(item: Item) {
     this.tasks.splice(this.tasks.indexOf(item), 1);
     this.saveToLocalStorage()
     }
 
   
+
+  dropdownMenu() {
+    this.dropdownOpen = true;
+    if (this.dropdownOpen) this.fadeInOut = 'fadeIn';
+    
+  }
+
   
+  @HostListener('document:click', ['$event']) //Remove the dropdown menu when clicking outside of the input field
+  onClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if ((!target.closest('.input-field'))) {
+      if (this.dropdownOpen) { //Toggle the fade out animation only if the dropdown menu is open
+        this.dropdownOpen = false;
+        this.fadeInOut = 'fadeOut';
+      }
+    }
+  }
+
+  dropwodnAnimationStage() {
+    if (!this.dropdownOpen) {
+      setTimeout(() => { return true; }, 500);
+    } else {
+      
+    };
+    return;
+  } 
   
 
   
