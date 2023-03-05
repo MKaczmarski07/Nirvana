@@ -15,6 +15,7 @@ export class TodoComponent implements OnInit {
   tasks: Item[] = [];
   dropdownOpen = false;
   fadeInOut = '';
+  filter: 'all' | 'active' | 'done'| 'important' = 'all';
   
   ngOnInit() {
     this.titleService.setTitle('To Do');
