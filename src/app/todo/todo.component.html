@@ -1,108 +1,70 @@
-<div class="h-full md:max-w-[80vw] md:w-[calc(100vw-15rem)] bg-[#f3f2f1]"
+<div class="h-full md:max-w-[80vw] md:w-[calc(100vw-15rem)] bg-[#f3f2f1] overflow-hidden relative flex flex-col justify-between"
 >
-    <div class="w-full flex justify-between bg-gradient-to-r from-[#4e54c8] to-[#8f94fb]
-    p-3">
-        <div>
-            <h1 class="text-3xl text-white mt-10">My Tasks</h1>
-            <p class="text-white">{{displayCurrentDate()}}</p>
+    <div>
+        <div class="w-full flex justify-between bg-gradient-to-r from-[#4e54c8] to-[#8f94fb]
+        p-3">
+            <div>
+                <h1 class="text-3xl text-white mt-10">My Tasks</h1>
+                <p class="text-white">{{displayCurrentDate()}}</p>
+            </div>
+            <div class="flex gap-3 items-end text-base">
+                <button class="flex gap-1 text-white" (click)="navSort()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5"></path>
+                    </svg>
+                    Sort
+                </button>
+                
+            </div>
+            <div class="bg-white absolute top-[7.8rem] shadow-lg w-36 rounded-bl-[10px]" [@navSortEnabled]="state">
+                <h3 class="w-full text-center p-3 font-semibold">Sort items</h3>
+                <hr>
+                <ul class="w-full p-3">
+                    <li class="flex">
+                        <div class="flex items-center">
+                            <input id="All" type="checkbox" 
+                            class="custom-filter-checkbox"/>
+                        </div>
+                        <label for="All" class="w-full pl-2 cursor-pointer">By name</label>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="flex gap-3 items-end text-base">
-            <button class="flex gap-1 text-white">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5"></path>
-                </svg>
-                  Filter
-            </button>
-            <button class="flex gap-1 text-white">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5"></path>
-                </svg>
-                 Sort
-            </button>
+        <div class="m-3 flex flex-col justify-between">
+                <div class="flex my-3 w-full  gap-3 text-slate-400">
+                    <button [ngClass]="{'text-[#4e54c8]': true}">All</button>
+                    <button>To do</button>
+                    <button>Done</button>
+                    <button>Important</button>
+                </div>
+
+                <ul class="max-w-full max-h-[calc(100vh-16.5rem)] overflow-y-scroll box-border flex flex-col gap-3 py-3">
+                    <li *ngFor="let i of tasks">
+                        <app-item (remove)="removeItem(i)"
+                        (editedToLocalStorage)="saveToLocalStorage()"
+                        [item]="i" ></app-item>
+                    </li>
+                </ul>
             
-        </div>
-        <div class="bg-white absolute top-[7.8rem] right-0 shadow-lg w-36 rounded-bl-[10px]">
-            <h3 class="w-full text-center p-3 font-semibold">Filter items</h3>
-            <hr>
-            <ul class="w-full p-3">
-                <li>
-                    <div class="flex items-center cursor-pointer ">
-                        <input id="All-radio" type="radio" name="All" class="w-4 h-4 cursor-pointer ">
-                        <label for="All-radio" class="w-full ml-2 cursor-pointer">All</label>
-                    </div>
-                </li>
-                <li>
-                    <!--SCSS-->
-                    <div class="flex items-center cursor-pointer ">
-                        <input id="toDo-radio" type="radio" name="toDo" class="w-4 h-4 cursor-pointer ">
-                        <label for="toDo-radio" class="w-full ml-2 cursor-pointer">To do</label>
-                    </div>
-                </li>
-                <li>
-                    <button class="w-full flex">
-                        Done
-                    </button>
-                </li>
-                <li>
-                    <button class="w-full flex">
-                        Important
-                    </button>
-                </li>
-            </ul>
         </div>
     </div>
 
-    <div class="mx-3 mt-3 rounded-[10px] justify-between shadow-md bg-white input-field">
+    <div class=" m-3 rounded-[10px] justify-between shadow-md bg-white input-field relative">
+        <span class="absolute bottom-2 left-0 flex items-center pl-2">
+            <svg class="h-6 w-6" fill="none" stroke="#808080" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
+              </svg>
+        </span>
         <input
         #newItem
         type="text"
         placeholder="Add new task"
         (keyup.enter)="addItem(newItem.value); newItem.value = ''" 
         (click)="dropdownMenu()"
-        class=" bg-white placeholder:italic px-2 py-2 rounded-t-[10px] border border-slate-300 focus:outline-none focus:border-[#4e54c8] focus:ring-[#4e54c8] focus:ring-1 w-full rounded-[10px]"
+        class=" bg-white placeholder:italic pr-2 pl-10 py-2 rounded-t-[10px] border border-slate-300 focus:outline-none focus:border-[#4e54c8] focus:ring-[#4e54c8] focus:ring-1 w-full rounded-[10px]"
         [ngClass]="{'animate-round': (fadeInOut === 'fadeIn'), 'animate-round-back': (fadeInOut === 'fadeOut')}"
         />
-        <div *ngIf="dropdownOpen" class="px-2 bg-[#f3f2f1] rounded-b-[10px] w-full flex justify-between " [ngClass]="{'animate-show': fadeInOut === 'fadeIn' }">
-            <div class="flex gap-3 mt-3">
-                <button class="h-6 w-6" ><svg fill="none" stroke="#333333" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"></path>
-                  </svg></button>
-                  <button class="h-6 w-6">
-                    <svg fill="none" stroke="#333333" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"></path>
-                  </svg></button>
-            </div>
-            <button (click)="addItem(newItem.value); newItem.value = ''"
-            class="bg-gradient-to-tr from-[#4e54c8] to-[#8f94fb] text-white rounded my-[0.5rem] font-semibold h-8 py-1 px-3">
-            Add</button>
-        </div>
-        
-        <div *ngIf="fadeInOut === 'fadeOut'" class="px-2 bg-[#f3f2f1] rounded-b-[10px] w-full flex justify-between" [ngClass]="{'animate-hide': fadeInOut === 'fadeOut' }">
-            <div class="flex gap-3 mt-3">
-                <button class="h-6 w-6" ><svg fill="none" stroke="#333333" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"></path>
-                  </svg></button>
-                  <button class="h-6 w-6">
-                    <svg fill="none" stroke="#333333" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"></path>
-                  </svg></button>
-            </div>
-            <button (click)="addItem(newItem.value); newItem.value = ''"
-            class="bg-gradient-to-tr from-[#4e54c8] to-[#8f94fb] text-white rounded my-[0.5rem] font-semibold h-8 py-1 px-3">
-            Add</button>
-        </div>
+
     </div>
-
-  
-    
-
-    <ul class="px-3 max-w-full">
-        <li *ngFor="let i of tasks">
-            <app-item (remove)="removeItem(i)"
-            (editedToLocalStorage)="saveToLocalStorage()"
-            [item]="i" ></app-item>
-        </li>
-    </ul>
-    
 </div>
     

@@ -1,66 +1,50 @@
+::placeholder {
+  color: #808080; 
+}
 
-@keyframes show {
-    0% {
-      height: 0;
-      overflow: hidden;
-    }
-    100% {
-      height: 3rem;
-      overflow: hidden;
-    }
-  }
-  
-.animate-show {
-    animation: show .5s ;
-    height: 3rem;
-  }
+  .custom-filter-checkbox{
+    appearance: none;
+    -webkit-appearance: none;
+    height: .8rem;
+    width: .8rem;
+    background-color: #ecedee;
+    cursor:pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
 
 
-@keyframes hide {
-    0% {
-      overflow: hidden;
-      height: 2.5rem;
-      
-    }
-    100% {
-      height: 0;
-      overflow: hidden;
-    }
-  }
-  
-.animate-hide {
-    animation: hide 0.5s ;
-    height: 0;
-    overflow: hidden;
+.custom-filter-checkbox:hover{
+    background-color: #dcdee1;
     
-  }
+}
 
-  @keyframes rounding {
-    0% {
-        border-radius: 10px;
-    }
-    100% {
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-  }
+.custom-filter-checkbox:checked{
+    background-color: #4e54c8;
+}
+.custom-filter-checkbox:checked::after{
+    display: block;
+}
 
-  .animate-round{
-    animation: rounding .5s ;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
 
-  @keyframes rounding-back{
-    0% {
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-    100% {
-        border-radius: 10px;
-    }
-  }
-  .animate-round-back{
-    animation: rounding-back 1s;
-    
-  }
+/* <--- CUSTOM SCROLL-BAR ---> */
+::-webkit-scrollbar {
+  width: .4em;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d4d7;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b1b6bd;
+}
+

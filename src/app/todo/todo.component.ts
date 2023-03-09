@@ -1,11 +1,29 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Item } from './item';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.css']
+  styleUrls: ['./todo.component.css'],
+  animations: [
+    trigger('navSortEnabled', [
+      state('void', style({
+        right: '-9rem'
+      })),
+      state('show', style({
+        right: '0',
+      })),
+      state('hide', style({
+        right: '-9rem',
+  
+      })),
+      transition('show => hide', animate('300ms ease-in')),
+      transition('hide => show', animate('300ms ease-out')),
+      transition('void => show', animate('300ms ease-out'))
+    ])
+  ]
 })
 export class TodoComponent implements OnInit {
   constructor(
@@ -15,8 +33,10 @@ export class TodoComponent implements OnInit {
   tasks: Item[] = [];
   dropdownOpen = false;
   fadeInOut = '';
-  filter: 'all' | 'active' | 'done'| 'important' = 'all';
-  
+  filter: 'all' | 'active' | 'done' | 'important' = 'all';
+  navSortEnabled = false;
+  state = 'void';
+
   ngOnInit() {
     this.titleService.setTitle('To Do');
     this.displayCurrentDate()
@@ -40,7 +60,6 @@ export class TodoComponent implements OnInit {
   }
 
 
-  
   saveToLocalStorage() {
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
@@ -60,8 +79,6 @@ export class TodoComponent implements OnInit {
     this.saveToLocalStorage()
     }
 
-  
-
   dropdownMenu() {
     this.dropdownOpen = true;
     if (this.dropdownOpen) this.fadeInOut = 'fadeIn';
@@ -80,14 +97,18 @@ export class TodoComponent implements OnInit {
     }
   }
 
-  dropwodnAnimationStage() {
-    if (!this.dropdownOpen) {
-      setTimeout(() => { return true; }, 500);
+  
+
+  navSort() {
+    this.navSortEnabled = !this.navSortEnabled;
+    if (this.navSortEnabled) {
+      this.state = 'show';
     } else {
-      
-    };
-    return;
-  } 
+      this.state = 'hide';
+    }
+  }
+
+  
   
 
   

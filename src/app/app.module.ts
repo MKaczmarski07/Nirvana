@@ -10,6 +10,7 @@ import { FocusModeComponent } from './focus-mode/focus-mode.component';
 import { Title } from '@angular/platform-browser';
 import { HomeComponent } from './home/home.component';
 import { ItemComponent } from './todo/item/item.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ItemComponent } from './todo/item/item.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [Title],
   bootstrap: [AppComponent]
