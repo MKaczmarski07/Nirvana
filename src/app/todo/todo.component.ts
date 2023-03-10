@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Item } from './item';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
+
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -68,7 +69,8 @@ export class TodoComponent implements OnInit {
     if (!description) return; // new description can't be an empty string
     this.tasks.unshift({ // add item to the top of the list
       description,
-      done: false
+      done: false,
+      isImportant: false
     })
     
     this.saveToLocalStorage()
@@ -77,13 +79,9 @@ export class TodoComponent implements OnInit {
   removeItem(item: Item) {
     this.tasks.splice(this.tasks.indexOf(item), 1);
     this.saveToLocalStorage()
-    }
-
-  dropdownMenu() {
-    this.dropdownOpen = true;
-    if (this.dropdownOpen) this.fadeInOut = 'fadeIn';
-    
   }
+  
+ 
 
   
   @HostListener('document:click', ['$event']) //Remove the dropdown menu when clicking outside of the input field
@@ -98,7 +96,6 @@ export class TodoComponent implements OnInit {
   }
 
   
-
   navSort() {
     this.navSortEnabled = !this.navSortEnabled;
     if (this.navSortEnabled) {
@@ -108,7 +105,17 @@ export class TodoComponent implements OnInit {
     }
   }
 
-  
+  tasksfiltering() {
+    if (this.filter==='active') {
+      return (item:Item) => !item.done
+    }else if (this.filter==='done') {
+      return (item:Item) => item.done
+    } else if (this.filter==='important') {
+      return (item:Item) => item.isImportant
+    }
+    return (item:Item) => item
+    }
+    
   
 
   

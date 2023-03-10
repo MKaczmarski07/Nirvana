@@ -32,19 +32,37 @@
         </div>
         <div class="m-3 flex flex-col justify-between">
                 <div class="flex my-3 w-full  gap-3 text-slate-400">
-                    <button [ngClass]="{'text-[#4e54c8]': true}">All</button>
-                    <button>To do</button>
-                    <button>Done</button>
-                    <button>Important</button>
+                    <button [ngClass]="{'text-[#4e54c8]': filter==='all'}" 
+                    (click)="filter='all'">All</button>
+                    <button [ngClass]="{'text-[#4e54c8]':  filter==='active'}"
+                    (click)="filter='active'">To do</button>
+                    <button [ngClass]="{'text-[#4e54c8]':  filter==='done'}"
+                    (click)="filter='done'">Done</button>
+                    <button [ngClass]="{'text-[#4e54c8]':  filter==='important'}" (click)="filter='important'">Important</button>
                 </div>
 
-                <ul class="max-w-full max-h-[calc(100vh-16.5rem)] overflow-y-scroll box-border flex flex-col gap-3 py-3">
-                    <li *ngFor="let i of tasks">
-                        <app-item (remove)="removeItem(i)"
-                        (editedToLocalStorage)="saveToLocalStorage()"
-                        [item]="i" ></app-item>
-                    </li>
-                </ul>
+                <ul class="max-w-full max-h-[calc(100vh-16.5rem)] overflow-y-scroll box-border flex flex-col gap-3 py-3" [ngSwitch]="filter">
+                    <ng-container *ngSwitchCase="'all'">
+                      <li *ngFor="let i of tasks">
+                        <app-item (remove)="removeItem(i)" (saveToLocalStorage)="saveToLocalStorage()" [item]="i"></app-item>
+                      </li>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'active'">
+                      <li *ngFor="let i of tasks.filter(tasksfiltering())">
+                        <app-item (remove)="removeItem(i)" (saveToLocalStorage)="saveToLocalStorage()" [item]="i"></app-item>
+                      </li>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'done'">
+                      <li *ngFor="let i of tasks.filter(tasksfiltering())">
+                        <app-item (remove)="removeItem(i)" (saveToLocalStorage)="saveToLocalStorage()" [item]="i"></app-item>
+                      </li>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'important'">
+                      <li *ngFor="let i of tasks.filter(tasksfiltering())">
+                        <app-item (remove)="removeItem(i)" (saveToLocalStorage)="saveToLocalStorage()" [item]="i"></app-item>
+                      </li>
+                    </ng-container>
+                  </ul>
             
         </div>
     </div>
@@ -60,7 +78,6 @@
         type="text"
         placeholder="Add new task"
         (keyup.enter)="addItem(newItem.value); newItem.value = ''" 
-        (click)="dropdownMenu()"
         class=" bg-white placeholder:italic pr-2 pl-10 py-2 rounded-t-[10px] border border-slate-300 focus:outline-none focus:border-[#4e54c8] focus:ring-[#4e54c8] focus:ring-1 w-full rounded-[10px]"
         [ngClass]="{'animate-round': (fadeInOut === 'fadeIn'), 'animate-round-back': (fadeInOut === 'fadeOut')}"
         />

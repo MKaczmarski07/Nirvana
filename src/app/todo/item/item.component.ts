@@ -14,7 +14,7 @@ export class ItemComponent {
   @Input() item!: Item;
   @Input() newItem!: string;
   @Output() remove = new EventEmitter<Item>();
-  @Output() editedToLocalStorage = new EventEmitter<Item>()
+  @Output() saveToLocalStorage = new EventEmitter<Item>()
 
 
   @HostListener('document:click', ['$event']) //Remove the dropdown menu when clicking outside of the item component 
@@ -29,13 +29,23 @@ export class ItemComponent {
     }
   }
 
+  markAsDone() {
+    this.item.done = !this.item.done
+    this.saveToLocalStorage.emit()
+  }
+
 
   saveItem(description: string) {
     //Save new description and save item in the local storage
     if (!description) return;
     this.editable = false;
     this.item.description = description;
-    this.editedToLocalStorage.emit()
+    this.saveToLocalStorage.emit()
+  }
+
+  markAsImportant() {
+    this.item.isImportant = !this.item.isImportant
+    this.saveToLocalStorage.emit()
   }
 
   toggleOptions() { //Toggle the dropdown menu
