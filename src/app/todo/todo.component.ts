@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener} from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Item } from './item';
 import { trigger, state, style, animate, transition } from '@angular/animations';
@@ -37,7 +37,7 @@ export class TodoComponent implements OnInit {
   filter: 'all' | 'active' | 'done' | 'important' = 'all';
   navSortEnabled = false;
   state = 'void';
-
+  
   ngOnInit() {
     this.titleService.setTitle('To Do');
     this.displayCurrentDate()
@@ -45,7 +45,6 @@ export class TodoComponent implements OnInit {
     if (savedTasks) {
       this.tasks = JSON.parse(savedTasks);
     }
-    
   }
 
   displayCurrentDate(): string {
@@ -59,7 +58,6 @@ export class TodoComponent implements OnInit {
   
     return `${dayOfWeek}, ${month} ${dayOfMonth}`;
   }
-
 
   saveToLocalStorage() {
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
@@ -83,7 +81,6 @@ export class TodoComponent implements OnInit {
   
  
 
-  
   @HostListener('document:click', ['$event']) //Remove the dropdown menu when clicking outside of the input field
   onClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
@@ -96,15 +93,7 @@ export class TodoComponent implements OnInit {
   }
 
   
-  navSort() {
-    this.navSortEnabled = !this.navSortEnabled;
-    if (this.navSortEnabled) {
-      this.state = 'show';
-    } else {
-      this.state = 'hide';
-    }
-  }
-
+  
   tasksfiltering() {
     if (this.filter==='active') {
       return (item:Item) => !item.done
@@ -114,8 +103,26 @@ export class TodoComponent implements OnInit {
       return (item:Item) => item.isImportant
     }
     return (item:Item) => item
+  }
+  
+  navSort() {
+    this.navSortEnabled = !this.navSortEnabled;
+    if (this.navSortEnabled) {
+      this.state = 'show';
+    } else {
+      this.state = 'hide';
     }
-    
+  }
+
+  // taskSorting() {
+  //   this.tasks.sort((a, b) => {
+  //     if (a.done === b.done) {
+  //       return a.description.localeCompare(b.description); // comparison based on description
+  //     } else {
+  //       return a.done ? 1 : -1; //comparison based on done property status
+  //     }
+  //   });
+  // }
   
 
   

@@ -11,6 +11,8 @@ import { Title } from '@angular/platform-browser';
 import { HomeComponent } from './home/home.component';
 import { ItemComponent } from './todo/item/item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
+   
   ],
   providers: [Title],
   bootstrap: [AppComponent]

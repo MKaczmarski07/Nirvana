@@ -10,6 +10,7 @@ export class ItemComponent {
   editable = false;
   isOpen = false;
   fadeInOut = '';
+  editedItemValue = '';
 
   @Input() item!: Item;
   @Input() newItem!: string;
@@ -34,6 +35,10 @@ export class ItemComponent {
     this.saveToLocalStorage.emit()
   }
 
+  editItem() { 
+    this.editable = !this.editable
+    this.editedItemValue = this.item.description;
+  }
 
   saveItem(description: string) {
     //Save new description and save item in the local storage
