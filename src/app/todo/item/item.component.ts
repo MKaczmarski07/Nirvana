@@ -8,6 +8,7 @@ import { Item } from '../item';
 })
 export class ItemComponent {
   editable = false;
+  confirmDeletion = false;
   isOpen = false;
   fadeInOut = '';
   editedItemValue = '';
@@ -27,6 +28,7 @@ export class ItemComponent {
         this.fadeInOut = 'fadeOut';
       }
       this.editable = false;
+      this.confirmDeletion = false;
     }
   }
 
@@ -37,7 +39,8 @@ export class ItemComponent {
 
   editItem() { 
     this.editable = !this.editable
-    this.editedItemValue = this.item.description;
+    this.editedItemValue = this.item.description; //display the current description in the input field
+    if(this.editable) this.confirmDeletion = false; //If the user is editing the item, the confirm deletion option will be removed
   }
 
   saveItem(description: string) {
@@ -53,9 +56,15 @@ export class ItemComponent {
     this.saveToLocalStorage.emit()
   }
 
+  deleteItem() { 
+    this.confirmDeletion = !this.confirmDeletion
+    if(this.confirmDeletion) this.editable = false; //If the user is confirming the deletion, the edit option will be removed
+  }
+
   toggleOptions() { //Toggle the dropdown menu
     this.isOpen = !this.isOpen;
     if (!this.isOpen) this.editable = false;
+    if(!this.isOpen) this.confirmDeletion = false
 
     if (this.isOpen) { //Toggle the fade in/out animation
       this.fadeInOut = 'fadeIn';

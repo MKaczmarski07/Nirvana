@@ -1,10 +1,10 @@
-<div class="h-full md:max-w-[80vw] md:w-[calc(100vw-15rem)] bg-[#f3f2f1] overflow-hidden relative flex flex-col justify-between"
+<div class="md:h-screen h-[calc(100vh-4.3rem)] md:max-w-[80vw] md:w-[calc(100vw-15rem)] bg-[#f3f2f1] overflow-hidden relative flex flex-col justify-between"
 >
     <div>
-        <div class="w-full flex justify-between bg-gradient-to-r from-[#4e54c8] to-[#8f94fb] p-3 ">
+        <div class="w-full flex justify-between p-3 toDoBackground">
             <div>
                 <h1 class="text-3xl text-white mt-10">My Tasks</h1>
-                <p class="text-white">{{displayCurrentDate()}}</p>
+                <p class="text-white">{{currentDay}}</p>
             </div>
             <div class="flex gap-3 items-end text-base">
                 <button class="flex gap-1 text-white" (click)="navSort()">
@@ -40,7 +40,8 @@
                     <button [ngClass]="{'text-[#4e54c8]':  filter==='important'}" (click)="filter='important'">Important</button>
                 </div>
 
-                <ul class="max-w-full max-h-[calc(100vh-16.5rem)] overflow-y-scroll box-border flex flex-col gap-3 py-3" [ngSwitch]="filter">
+                <ul class="max-w-full md:max-h-[calc(100vh-16.5rem)] 
+                max-h-[calc(100vh-20.25rem)] overflow-y-scroll box-border flex flex-col gap-3 py-3" [ngSwitch]="filter">
                     <ng-container *ngSwitchCase="'all'">
                       <li *ngFor="let i of tasks">
                         <app-item (remove)="removeItem(i)" (saveToLocalStorage)="saveToLocalStorage()" [item]="i"></app-item>
@@ -66,7 +67,7 @@
         </div>
     </div>
 
-    <div class=" m-3 rounded-[10px] justify-between shadow-md bg-white input-field relative">
+    <div class=" mx-3 mb-[0.85rem] rounded-[10px] justify-between shadow-md bg-white input-field relative">
         <span class="absolute bottom-2 left-0 flex items-center pl-2">
             <svg class="h-6 w-6" fill="none" stroke="#808080" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
@@ -78,7 +79,6 @@
         placeholder="Add new task"
         (keyup.enter)="addItem(newItem.value); newItem.value = ''" 
         class=" bg-white placeholder:italic pr-2 pl-10 py-2 rounded-t-[10px] border border-slate-300 focus:outline-none focus:border-[#4e54c8] focus:ring-[#4e54c8] focus:ring-1 w-full rounded-[10px]"
-        [ngClass]="{'animate-round': (fadeInOut === 'fadeIn'), 'animate-round-back': (fadeInOut === 'fadeOut')}"
         />
 
     </div>

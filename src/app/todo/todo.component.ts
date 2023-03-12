@@ -2,6 +2,8 @@ import { Component, OnInit, HostListener} from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Item } from './item';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { CustomDateService } from '../date.service';
+
 
 
 @Component({
@@ -29,10 +31,12 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class TodoComponent implements OnInit {
   constructor(
     private titleService: Title,
+    private dateService: CustomDateService
   ) { }
 
   tasks: Item[] = [];
   dropdownOpen = false;
+  currentDay = this.dateService.getCurrentDate();
   fadeInOut = '';
   filter: 'all' | 'active' | 'done' | 'important' = 'all';
   navSortEnabled = false;
@@ -40,24 +44,13 @@ export class TodoComponent implements OnInit {
   
   ngOnInit() {
     this.titleService.setTitle('To Do');
-    this.displayCurrentDate()
+    this.dateService.getCurrentDate()
     const savedTasks = localStorage.getItem('tasks');
     if (savedTasks) {
       this.tasks = JSON.parse(savedTasks);
     }
   }
 
-  displayCurrentDate(): string {
-    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const monthsOfYear = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  
-    const date = new Date();
-    const dayOfWeek = daysOfWeek[date.getDay()];
-    const month = monthsOfYear[date.getMonth()];
-    const dayOfMonth = date.getDate();
-  
-    return `${dayOfWeek}, ${month} ${dayOfMonth}`;
-  }
 
   saveToLocalStorage() {
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
@@ -79,7 +72,6 @@ export class TodoComponent implements OnInit {
     this.saveToLocalStorage()
   }
   
- 
 
   @HostListener('document:click', ['$event']) //Remove the dropdown menu when clicking outside of the input field
   onClick(event: MouseEvent) {
