@@ -13,7 +13,8 @@ import { ItemComponent } from './todo/item/item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { NoteMiniatureComponent } from './notepad/note-miniature/note-miniature.component';
-import { NoteComponent } from './notepad/note-miniature/note/note.component';
+import { NewNoteComponent } from './notepad/new-note/new-note.component';
+import { NoteComponent } from './notepad/note/note.component';
 
 
 
@@ -28,6 +29,7 @@ import { NoteComponent } from './notepad/note-miniature/note/note.component';
     HomeComponent,
     ItemComponent,
     NoteMiniatureComponent,
+    NewNoteComponent,
     NoteComponent
   ],
   imports: [

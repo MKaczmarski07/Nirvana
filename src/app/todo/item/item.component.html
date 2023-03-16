@@ -45,16 +45,16 @@
     </div>
 
     <div *ngIf="editable" class="flex gap-2 h-full mr-3 items-center">
-      <button class="bg-[#4e54c8] border-[#4e54c8] border-2 hover:bg-[#8f94fb] hover:border-[#8f94fb] text-white py-[0.05rem] px-2 rounded transition-all duration-100"
+      <button class="bg-primary border-primary border-2 hover:bg-secondary hover:border-secondary text-white py-[0.05rem] px-2 rounded transition-all duration-100"
       (click)="saveItem(editedItemValue)">Save</button>
-      <button class="border-[#4e54c8] border-2 text-[#4e54c8] hover:border-[#8f94fb] hover:text-[#8f94fb] py-[0.05rem] px-2 rounded"  
+      <button class="border-primary border-2 text-primary hover:border-secondary hover:text-secondary py-[0.05rem] px-2 rounded"  
       (click)="editable=false">Cancel</button>
     </div>
 
     <div *ngIf="confirmDeletion" class="flex gap-2 h-full mr-3 items-center">
-      <button class="bg-[#d11a2a] border-[#d11a2a] border-2 hover:bg-[#FA4353] hover:border-[#FA4353] text-white py-[0.05rem] px-2 rounded transition-all duration-100"
+      <button class="bg-[#CB0029] border-[#CB0029] border-2 hover:bg-[#BF1D30] hover:border-[#BF1D30] text-white py-[0.05rem] px-2 rounded transition-all duration-100"
       (click)="remove.emit()">Delete</button>
-      <button class="border-[#4e54c8] border-2 text-[#4e54c8] hover:border-[#8f94fb] hover:text-[#8f94fb] py-[0.05rem] px-2 rounded"  
+      <button class="border-primary border-2 text-primary hover:border-secondary hover:text-secondary py-[0.05rem] px-2 rounded"  
       (click)="confirmDeletion=false">Cancel</button>
     </div>
     

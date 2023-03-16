@@ -1,26 +1,33 @@
-<div class="md:h-screen h-[calc(100vh-4.3rem)] md:max-w-[80vw] md:w-[calc(100vw-15rem)] bg-[#f3f2f1] overflow-hidden relative p-3 flex flex-col justify-between"
->
+<div class="md:h-screen h-[calc(100vh-4.3rem)] md:max-w-[80vw] md:w-[calc(100vw-15rem)] bg-background relative p-3 flex flex-col justify-between"
+*ngIf="!showNewNote && !showCurrentNote">
    <div>
-        <div class="mb-3">
+        <div class="mb-3 text-greyText">
             <h1 class="text-4xl">Hello, Mikołaj</h1>
             <span class="text-2xl">You have {{numberOfNotes}} 
                 <span *ngIf="numberOfNotes === 1">note</span>
                 <span *ngIf="numberOfNotes !== 1">notes</span>
             </span>
         </div>
-        <div>
-            <ul class=" w-full flex flex-wrap gap-3 h-full">
-                <li *ngFor="let i of notes">
-                    <app-note-miniature [note]="i"></app-note-miniature>
-                </li>
-            </ul>
+        <div class="w-full overflow-y-scroll sm:max-h-[calc(100vh-7rem)] max-h-[calc(100vh-10rem)]">
+                <ul class="flex flex-wrap gap-3 justify-center pb-6 md:pb-0">
+                    <li *ngFor="let i of notes">
+                        <app-note-miniature [note]="i" 
+                        (openCurrentNote)="showCurrentNote=true" 
+                        (sendCurrentNoteData)="transferCurrentNote($event)"></app-note-miniature>
+                    </li>
+                </ul>
+          
         </div>
    </div>
-    <div class="w-full flex justify-end">
-        <button class="p-3  bg-[#4e54c8] rounded-[50%]">
+    <div class="absolute bottom-3 right-3">
+        <button class="p-3  bg-[#363b90] rounded-[50%] shadow-md"  (click)="showNewNote=true">
             <svg class="w-6 h-6" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
             </svg>
         </button>
     </div>
+    
 </div>
+<app-new-note *ngIf="showNewNote" (showNewNote)="showNewNote=false" 
+(sendNewNote)="addNote($event)"></app-new-note>
+<app-note *ngIf="showCurrentNote" (showCurrentNote)="showCurrentNote=false"></app-note>

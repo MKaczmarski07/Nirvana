@@ -5,6 +5,13 @@ module.exports = {
   theme: {
     extend: {screens: {
       'md': '960px'
+    },
+    colors: {
+      'primary': '#4e54c8',
+      'secondary': '#7271E9',
+      'greyText': '#333333',
+      'background': '#f3f2f1'
+
     }
     },
   },

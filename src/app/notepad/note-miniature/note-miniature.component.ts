@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter,OnInit } from '@angular/core';
 import { Note } from '../note';
 
 @Component({
@@ -7,5 +7,14 @@ import { Note } from '../note';
   styleUrls: ['./note-miniature.component.css']
 })
 export class NoteMiniatureComponent {
-@Input() note!: Note;
+  @Input() note!: Note;
+  currentNote = this.note;
+  @Output() openCurrentNote = new EventEmitter();
+  @Output() sendCurrentNoteData = new EventEmitter<Note>();
+  
+
+  onCurrentNoteOpened() { //send data to note.component
+    this.openCurrentNote.emit();
+    this.sendCurrentNoteData.emit(this.currentNote);
+  }
 }

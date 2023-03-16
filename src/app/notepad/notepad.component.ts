@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { CustomDateService } from '../date.service';
 import { Note } from '../notepad/note';
@@ -14,31 +14,41 @@ export class NotepadComponent {
     private dateService: CustomDateService
   ) { }
   
-  notes: Note[] = [{
-    content: "Według mnie to nie ma tak że dobrze albo że nie dobrze, gdybym miał powiedzieć, co cenię w życiu najbardziej powiedziuałbym że ludzi, ludzki, którzy by tak rzec pomaga, kto wie, dla czego by nie",
-    title: "Make a notepad component and a note interface",
-    date: this.dateService.getCurrentDate()
-  },
-  {
-    content: "Według mnie to nie ma tak że dobrze albo że nie dobrze, gdybym miał powiedzieć, co cenię w życiu najbardziej powiedziuałbym że ludzi, ludzki, którzy by tak rzec pomaga, kto wie, dla czego by nie",
-    title: "Make a notepad component and a note interface",
-    date: this.dateService.getCurrentDate()
-    },
-    {
-      content: "Według mnie to nie ma tak że dobrze albo że nie dobrze, gdybym miał powiedzieć, co cenię w życiu najbardziej powiedziuałbym że ludzi, ludzki, którzy by tak rzec pomaga, kto wie, dla czego by nie",
-      title: "Make a notepad component and a note interface",
-      date: this.dateService.getCurrentDate()
-    },
-    {
-      content: "Według mnie to nie ma tak że dobrze albo że nie dobrze, gdybym miał powiedzieć, co cenię w życiu najbardziej powiedziuałbym że ludzi, ludzki, którzy by tak rzec pomaga, kto wie, dla czego by nie",
-      title: "Make a notepad component and a note interface",
-      date: this.dateService.getCurrentDate()
-    }];
-  numberOfNotes: number = this.notes.length;
+  notes: Note[] = [];
+  numberOfNotes = 0;
+  @Input() showNewNote = false;
+  @Input() showCurrentNote = false;
+  currentOpenedNote!: Note;
+  
   
   ngOnInit() {
     this.titleService.setTitle('Notepad');
     this.dateService.getCurrentDate();
+    const savedNotes = localStorage.getItem('notes');
+    if (savedNotes) {
+      this.notes = JSON.parse(savedNotes);
+    }
+    this.numberOfNotes = this.notes.length;
   }
+
+  addNote(note: Note) {
+    if(note.content === '') return
+    this.notes.unshift({ 
+      title: note.title,
+      content: note.content,
+      date: note.date
+    })
+    this.saveToLocalStorage();
+  }
+
+  saveToLocalStorage() {
+    localStorage.setItem('notes', JSON.stringify(this.notes));
+  }
+
+  transferCurrentNote(currentNote: Note) {
+    this.currentOpenedNote = currentNote; //receive data from note-miniature.component
+  }
+    
+  
 
 }
