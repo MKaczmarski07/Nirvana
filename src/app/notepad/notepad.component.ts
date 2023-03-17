@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { CustomDateService } from '../date.service';
 import { Note } from '../notepad/note';
@@ -17,7 +17,8 @@ export class NotepadComponent {
   notes: Note[] = [];
   numberOfNotes = 0;
   @Input() showNewNote = false;
-  @Input() showCurrentNote = false;
+  @Input() isCurrentNoteOpened = false;
+  @Input() currentNoteIndex!: number;
   currentOpenedNote!: Note;
   
   
@@ -25,13 +26,16 @@ export class NotepadComponent {
     this.titleService.setTitle('Notepad');
     this.dateService.getCurrentDate();
     const savedNotes = localStorage.getItem('notes');
+    //get notes from local storage
     if (savedNotes) {
       this.notes = JSON.parse(savedNotes);
     }
+    //get the number of notes
     this.numberOfNotes = this.notes.length;
   }
 
-  addNote(note: Note) {
+  addNote(note: Note) { 
+    //add new note to the array
     if(note.content === '') return
     this.notes.unshift({ 
       title: note.title,
@@ -45,9 +49,12 @@ export class NotepadComponent {
     localStorage.setItem('notes', JSON.stringify(this.notes));
   }
 
-  transferCurrentNote(currentNote: Note) {
-    this.currentOpenedNote = currentNote; //receive data from note-miniature.component
-  }
+  findCurrentNote(index: number) {
+    //find the currently open note based on the index and send it to note-component
+     this.currentOpenedNote = this.notes[index];
+     this.currentNoteIndex = index;
+
+   }
     
   
 

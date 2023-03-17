@@ -8,13 +8,13 @@ import { Note } from '../note';
 })
 export class NoteMiniatureComponent {
   @Input() note!: Note;
-  currentNote = this.note;
   @Output() openCurrentNote = new EventEmitter();
-  @Output() sendCurrentNoteData = new EventEmitter<Note>();
+  @Output() sendCurrentNoteIndex = new EventEmitter<number>();
+  @Input() index!: number;
   
 
   onCurrentNoteOpened() { //send data to note.component
     this.openCurrentNote.emit();
-    this.sendCurrentNoteData.emit(this.currentNote);
+    this.sendCurrentNoteIndex.emit(this.index);
   }
 }

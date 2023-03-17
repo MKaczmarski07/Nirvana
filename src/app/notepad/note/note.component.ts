@@ -1,4 +1,4 @@
-import { Component,Output, EventEmitter } from '@angular/core';
+import { Component,Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { Note } from '../note';
 
 @Component({
@@ -7,5 +7,10 @@ import { Note } from '../note';
   styleUrls: ['./note.component.css']
 })
 export class NoteComponent {
- @Output() showCurrentNote = new EventEmitter<boolean>();
+  @Output() closeCurrentNote = new EventEmitter<boolean>();
+  @Input() note!: Note;
+  @Input() index!: number;
+  
+  
+
  }

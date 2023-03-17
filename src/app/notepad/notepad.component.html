@@ -1,5 +1,5 @@
 <div class="md:h-screen h-[calc(100vh-4.3rem)] md:max-w-[80vw] md:w-[calc(100vw-15rem)] bg-background relative p-3 flex flex-col justify-between"
-*ngIf="!showNewNote && !showCurrentNote">
+*ngIf="!showNewNote && !isCurrentNoteOpened">
    <div>
         <div class="mb-3 text-greyText">
             <h1 class="text-4xl">Hello, Mikołaj</h1>
@@ -10,10 +10,11 @@
         </div>
         <div class="w-full overflow-y-scroll sm:max-h-[calc(100vh-7rem)] max-h-[calc(100vh-10rem)]">
                 <ul class="flex flex-wrap gap-3 justify-center pb-6 md:pb-0">
-                    <li *ngFor="let i of notes">
-                        <app-note-miniature [note]="i" 
-                        (openCurrentNote)="showCurrentNote=true" 
-                        (sendCurrentNoteData)="transferCurrentNote($event)"></app-note-miniature>
+                    <li *ngFor="let note of notes; let i = index">
+                        <app-note-miniature [note]="note" [index]="i" 
+                        (openCurrentNote)="isCurrentNoteOpened=true"
+                        (sendCurrentNoteIndex)="findCurrentNote($event)"
+                        ></app-note-miniature>
                     </li>
                 </ul>
           
@@ -28,6 +29,13 @@
     </div>
     
 </div>
-<app-new-note *ngIf="showNewNote" (showNewNote)="showNewNote=false" 
-(sendNewNote)="addNote($event)"></app-new-note>
-<app-note *ngIf="showCurrentNote" (showCurrentNote)="showCurrentNote=false"></app-note>
+<app-new-note *ngIf="showNewNote" 
+(showNewNote)="showNewNote=false" 
+(sendNewNote)="addNote($event)">
+</app-new-note>
+
+<app-note *ngIf="isCurrentNoteOpened" 
+(closeCurrentNote)="isCurrentNoteOpened=false" 
+[note]="currentOpenedNote" 
+[index]="currentNoteIndex"
+ ></app-note>
