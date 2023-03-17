@@ -8,8 +8,8 @@
                 <span *ngIf="numberOfNotes !== 1">notes</span>
             </span>
         </div>
-        <div class="w-full overflow-y-scroll sm:max-h-[calc(100vh-7rem)] max-h-[calc(100vh-10rem)]">
-                <ul class="flex flex-wrap gap-3 justify-center pb-6 md:pb-0">
+        <div class="overflow-y-scroll md:max-h-[calc(100vh-7rem)] max-h-[calc(100vh-10rem)] md:max-w-[77.5vw]">
+                <ul class="flex flex-wrap gap-3 pb-6 md:pb-0">
                     <li *ngFor="let note of notes; let i = index">
                         <app-note-miniature [note]="note" [index]="i" 
                         (openCurrentNote)="isCurrentNoteOpened=true"
@@ -29,6 +29,7 @@
     </div>
     
 </div>
+
 <app-new-note *ngIf="showNewNote" 
 (showNewNote)="showNewNote=false" 
 (sendNewNote)="addNote($event)">
@@ -36,6 +37,8 @@
 
 <app-note *ngIf="isCurrentNoteOpened" 
 (closeCurrentNote)="isCurrentNoteOpened=false" 
+(updateNoteValue)="updateNoteValue($event, $event)"
+(deleteNote)="deleteNote($event)"
 [note]="currentOpenedNote" 
 [index]="currentNoteIndex"
  ></app-note>

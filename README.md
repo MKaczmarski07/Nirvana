@@ -8,18 +8,20 @@
 ## Features 📋
 **To do list**
 - Adding user-written tasks
-- Filtering 
-- Deleting
-- Editing existing tasks
-- Prioritizing tasks
+- Filtering tasks by category: all, done, to do and important
+- Editing and deleting existing tasks
+- Prioritizing - tasks can be highlighted as important
+
+**Notepad**
+- creating user-written notes, containing title, last edit date and content
+- Editing and deleting existing notes
 
 ## Future updates ⌛
 **To do list**
 - Sorting
 
-**Notebook**
-- creating user-written notes
-- Basic text editing
+**Notepad**
+- voice text input
 
 **Focus mode**
 - Application will also include a unique "Quiet Place" mode that will create a calm environment for focused learning or work. 
