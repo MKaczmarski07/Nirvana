@@ -15,24 +15,27 @@ export class NoteComponent {
   @Input() index!: number;
   @Output() updateNoteValue = new EventEmitter();
   @Output() deleteNote = new EventEmitter<number>();
-  @Output() refreshNotes = new EventEmitter();
+  confirmDeletion = false;
+  isEmpty = false;
   displayedDate = this.dateService.getCurrentDate()
   editable = false;
 
   saveEditedNote() {
-    //prevent from saving empty note
-    if (this.note.content !== '' || this.note.title !== '') {
-      //send data to notepad.component 
-      this.updateNoteValue.emit({index: this.index, note: this.note});
-    } else {
-      // ASK USER IF HE WANTS TO DELETE THE NOTE
-      //delete note if it's empty
-      //this.deleteNote.emit(this.index);
-      
-    }
+    //send data to notepad.component 
+    this.updateNoteValue.emit({index: this.index, note: this.note});
     //change date only if the note was edited
     this.note.date = this.dateService.getCurrentDate();
-    
+  }
+
+  checkIfEmpty() {
+    if (this.note.content === '' && this.note.title === '') {
+      // ask user if he wants to leave and delete the empty note
+      this.isEmpty = true;
+    } else {
+      //if the note is not empty, save it
+      this.closeCurrentNote.emit();
+    }
+      
   }
 
   
