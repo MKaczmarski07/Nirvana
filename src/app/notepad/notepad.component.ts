@@ -1,7 +1,9 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { CustomDateService } from '../date.service';
+import { EmptyNoteService } from '../empty-note.service';
 import { Note } from '../notepad/note';
+
 
 @Component({
   selector: 'app-notepad',
@@ -11,7 +13,8 @@ import { Note } from '../notepad/note';
 export class NotepadComponent {
   constructor(
     private titleService: Title,
-    private dateService: CustomDateService
+    private dateService: CustomDateService,
+    public emptyNoteService: EmptyNoteService
   ) { }
   
   notes: Note[] = [];
@@ -20,6 +23,7 @@ export class NotepadComponent {
   @Input() isCurrentNoteOpened = false;
   @Input() currentNoteIndex!: number;
   currentOpenedNote!: Note;
+
   
   
   ngOnInit() {
@@ -77,8 +81,11 @@ export class NotepadComponent {
     this.isCurrentNoteOpened = false;
     //update the number of notes
     this.numberOfNotes = this.notes.length;
+    //if the note was deleted, clicking on the menu will not open the popup
+    this.emptyNoteService.isEmpty = false;
   }
-    
+
+
   
 
 
