@@ -1,3 +1,62 @@
-<div class="w-full h-full flex items-center">
-<h1 class="text-3xl font-semibold text-center w-full">Work in progress...</h1>
+<div class="md:h-screen h-[calc(100vh-4.3rem)] md:max-w-[80vw] md:w-[calc(100vw-15rem)] bg-background relative p-3 flex flex-col justify-between boundary"
+>
+
+
+    <div class="cursor-move bg-slate-100 bg-opacity-70 backdrop-blur-sm w-[20rem] p-3 rounded-[10px] text-greyText absolute right-3 top-[20rem]" cdkDragBoundary=".boundary" cdkDrag>
+      Music player
+      //clicked = z-index: 10, else 1
+    </div>
+    <div class="cursor-move bg-slate-100 bg-opacity-70 backdrop-blur-sm w-[20rem] p-3 rounded-[10px] text-greyText absolute right-3 top-[10rem]" cdkDragBoundary=".boundary" cdkDrag>
+        <div class="flex justify-between">
+            <p>Timer</p>
+            <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"></path>
+              </svg>
+        </div>
+        <div class="flex items-center justify-between my-1">
+           <div class="flex items-center justify-between">
+            <span class="text-6xl">{{minutes}}:{{seconds}}</span>
+            <button *ngIf="timerButton==='start'" (click)="startTimer()" class="py-1 px-3 border-black border-2  rounded ml-12">Start</button>
+            <button *ngIf="timerButton==='stop'" (click)="stopTimer()" class="py-1 px-3 border-black border-2  rounded ml-12">Stop</button>
+           </div>
+            <svg (click)="resetTimer()" class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"></path>
+              </svg>
+
+        </div>
+        <div class="flex gap-3 underline-offset-8">
+            <button (click)="timerPomodoro()" [ngClass]="{'underline': timerType==='pomodoro'}">Pomodoro</button>
+            <button (click)="timerShortBreak()" [ngClass]="{'underline': timerType==='shortB'}">Short Break</button>
+            <button (click)="timerLongBreak()" [ngClass]="{'underline': timerType==='longB'}">Long Break</button>
+        </div>
+    </div>
+    <div class="w-[20rem] h-20 cursor-move " cdkDragBoundary=".boundary" cdkDrag>
+        <h1>Good morning</h1>
+        <h2>Its Monday, March 20</h2>
+    </div>
+    <div class="absolute top-3 right-3 flex gap-3">
+        <button class="p-3 rounded-[10px] bg-slate-100">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.531V19.94a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.506-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.395C2.806 8.757 3.63 8.25 4.51 8.25H6.75z"></path>
+              </svg>
+
+        </button>
+        <button (click)="Fullscreen()" class="p-3 rounded-[10px] bg-slate-100">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"></path>
+              </svg>
+        </button>
+        <button class="p-3 rounded-[10px] bg-slate-100">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+              </svg>
+        </button>
+        
+    </div>
+
+    
+
+  
+
+
 </div>

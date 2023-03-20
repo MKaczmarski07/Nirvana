@@ -16,6 +16,8 @@ import { NoteMiniatureComponent } from './notepad/note-miniature/note-miniature.
 import { NewNoteComponent } from './notepad/new-note/new-note.component';
 import { NoteComponent } from './notepad/note/note.component';
 
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 
 
 
@@ -36,7 +38,8 @@ import { NoteComponent } from './notepad/note/note.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    DragDropModule
    
   ],
   providers: [Title],
