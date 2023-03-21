@@ -2,11 +2,27 @@
 >
 
 
-    <div class="cursor-move bg-slate-100 bg-opacity-70 backdrop-blur-sm w-[20rem] p-3 rounded-[10px] text-greyText absolute right-3 top-[20rem]" cdkDragBoundary=".boundary" cdkDrag>
-      Music player
-      //clicked = z-index: 10, else 1
+    <div class="absolute top-3 right-3 flex flex-col justify-end gap-3">
+    <div class="flex gap-3 justify-end">
+        <button (click)="muteAll()" class="p-3 rounded-[10px] bg-slate-100 bg-opacity-70 backdrop-blur-sm">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.531V19.94a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.506-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.395C2.806 8.757 3.63 8.25 4.51 8.25H6.75z"></path>
+              </svg>
+
+        </button>
+        <button (click)="Fullscreen()" class="p-3 rounded-[10px] bg-slate-100 bg-opacity-70 backdrop-blur-sm">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"></path>
+              </svg>
+        </button>
+        <button class="p-3 rounded-[10px] bg-slate-100 bg-opacity-70 backdrop-blur-sm">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+              </svg>
+        </button>
+        
     </div>
-    <div class="cursor-move bg-slate-100 bg-opacity-70 backdrop-blur-sm w-[20rem] p-3 rounded-[10px] text-greyText absolute right-3 top-[10rem]" cdkDragBoundary=".boundary" cdkDrag>
+    <div class="cursor-move bg-slate-100 bg-opacity-70 backdrop-blur-sm w-[20rem] p-3 rounded-[10px] text-greyText" cdkDragBoundary=".boundary " cdkDrag>
         <div class="flex justify-between">
             <p>Timer</p>
             <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -30,30 +46,37 @@
             <button (click)="timerLongBreak()" [ngClass]="{'underline': timerType==='longB'}">Long Break</button>
         </div>
     </div>
-    <div class="w-[20rem] h-20 cursor-move " cdkDragBoundary=".boundary" cdkDrag>
-        <h1>Good morning</h1>
-        <h2>Its Monday, March 20</h2>
-    </div>
-    <div class="absolute top-3 right-3 flex gap-3">
-        <button class="p-3 rounded-[10px] bg-slate-100">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.531V19.94a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.506-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.395C2.806 8.757 3.63 8.25 4.51 8.25H6.75z"></path>
+    <div class="cursor-move bg-slate-100 bg-opacity-70 backdrop-blur-sm w-[20rem] rounded-[10px] text-greyText p-3" cdkDragBoundary=".boundary" cdkDrag>
+        <div class="flex justify-between">
+            <p>Player</p>
+            <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"></path>
               </svg>
-
-        </button>
-        <button (click)="Fullscreen()" class="p-3 rounded-[10px] bg-slate-100">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"></path>
-              </svg>
-        </button>
-        <button class="p-3 rounded-[10px] bg-slate-100">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-              </svg>
-        </button>
+        </div>
+        <div class="my-3">
+            <iframe *ngIf="playerType==='lofi'" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3BOxfexQyBa1tsEZ1tJFVQ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe *ngIf="playerType==='anime'" src="https://open.spotify.com/embed/album/0EFD2Rde1hYRbX9LS9qIZi?utm_source=generator&theme=0"  width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe *ngIf="playerType==='ambient'" src="https://open.spotify.com/embed/playlist/2MWM1xj3NsERH1m3h4i1B7?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
         
+        <div class="flex gap-3 underline-offset-8">
+            <button (click)="playerType='lofi'"  [ngClass]="{'underline': playerType==='lofi'}">Lofi</button>
+            <button (click)="playerType='anime'"  [ngClass]="{'underline': playerType==='anime'}">Anime</button>
+            <button (click)="playerType='ambient'"  [ngClass]="{'underline': playerType==='ambient'}">Ambient</button>
+        </div>
+     
+    </div>
     </div>
 
+    <div class="w-[38vw] cursor-move absolute bottom-6 left-6 " cdkDragBoundary=".boundary" cdkDrag>
+        <div class="sm:flex justify-between hidden">
+            <p class="lg:text-xl text-lg text-white textShdow">{{dateService.getCurrentDate()}}</p> 
+            <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"></path>
+              </svg>
+        </div>
+        <p class="text-white xl:text-3xl lg:text-2xl text-xl textShdow  sm:block hidden">“Live your beliefs and you can turn the world around.” – Henry David Thoreau</p>
+    </div>
     
 
   

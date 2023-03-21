@@ -1,9 +1,12 @@
-
-  
-  
-  
 .boundary{
-    background-image: url(../../assets/Images/avatar.gif);
+    background-image: url(../../assets/Images/nature.gif);
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.textShdow{
+    text-shadow: -0.5px -0.5px 0 #333333, 
+                0.5px -0.5px 0 #333333, 
+                -0.5px 0.5px 0 #333333, 
+                0.5px 0.5px 0 #333333;
 }

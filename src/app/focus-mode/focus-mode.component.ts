@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { CustomDateService } from '../date.service';
 
 @Component({
   selector: 'app-focus-mode',
@@ -7,7 +8,10 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./focus-mode.component.css']
 })
 export class FocusModeComponent {
-  constructor(private titleService: Title) { }
+  constructor(
+    private titleService: Title,
+    public dateService: CustomDateService,
+  ) { }
   startingMinutes = 20;
   time = this.startingMinutes * 60;
   seconds: number|string= '00' 
@@ -15,6 +19,9 @@ export class FocusModeComponent {
   timerButton: 'start' | 'stop' = 'start'
   timerType: 'pomodoro' | 'shortB' | 'longB' = 'pomodoro';
   timer: any;
+  playerType: 'lofi' | 'anime' | 'ambient' = 'lofi';
+ 
+
 
   ngOnInit() {
     this.titleService.setTitle('Focus mode');
@@ -32,18 +39,28 @@ export class FocusModeComponent {
 
   }
 
+  muteAll() { }
+
+
+
+  //Timer functions
+
+  //Wydzielić timer do zewnętrznego serwisu z globalną zmienną przechowującą wartość i stan timera
   Timer() {
     this.seconds = this.time % 60;
     this.minutes = Math.floor(this.time / 60);
     //Add 0 before seconds and minutes if they are less than 10
     this.minutes = this.minutes < 10 ? '0' + this.minutes : this.minutes;
     this.seconds = this.seconds < 10 ? '0' + this.seconds : this.seconds;
+    //reset timer when the countdown is over
+    if (this.time === 0) this.resetTimer()
     this.time--;
 
   }
 
   startTimer() {
-    this.timerButton='stop';
+    this.timerButton = 'stop';
+    this.Timer()
     this.timer = setInterval(() => this.Timer(), 1000);
   }
 
@@ -56,11 +73,10 @@ export class FocusModeComponent {
     //Reset timer to default value
     this.stopTimer();
     this.time = this.startingMinutes * 60;
-    this.minutes = this.startingMinutes === 5? '05' : this.startingMinutes;
+    this.minutes = this.startingMinutes < 10 ? '05' : this.startingMinutes;
     this.seconds = '00';
   }
 
-  
   timerShortBreak() {
     this.resetTimer()
     this.timerType = 'shortB';
@@ -87,8 +103,9 @@ export class FocusModeComponent {
     this.minutes = 20;
     this.seconds = '00';
   }
-     
 
+
+  
 
 }
 
