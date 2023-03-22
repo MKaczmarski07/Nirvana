@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { CustomDateService } from '../date.service';
 import { EmptyNoteService } from '../empty-note.service';
 import { Note } from '../notepad/note';
@@ -12,7 +11,6 @@ import { Note } from '../notepad/note';
 })
 export class NotepadComponent {
   constructor(
-    private titleService: Title,
     private dateService: CustomDateService,
     public emptyNoteService: EmptyNoteService
   ) { }
@@ -27,7 +25,6 @@ export class NotepadComponent {
   
   
   ngOnInit() {
-    this.titleService.setTitle('Notepad');
     this.dateService.getCurrentDate();
     this.getNotesFromLocalStorage()
     

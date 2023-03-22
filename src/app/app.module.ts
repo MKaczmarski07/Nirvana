@@ -8,7 +8,6 @@ import { TodoComponent } from './todo/todo.component';
 import { NotepadComponent } from './notepad/notepad.component';
 import { FocusModeComponent } from './focus-mode/focus-mode.component';
 import { Title } from '@angular/platform-browser';
-import { HomeComponent } from './home/home.component';
 import { ItemComponent } from './todo/item/item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -28,7 +27,6 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     TodoComponent,
     NotepadComponent,
     FocusModeComponent,
-    HomeComponent,
     ItemComponent,
     NoteMiniatureComponent,
     NewNoteComponent,

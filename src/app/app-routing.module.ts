@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FocusModeComponent } from './focus-mode/focus-mode.component';
-import { HomeComponent } from './home/home.component';
 import { NotepadComponent } from './notepad/notepad.component';
 import { TodoComponent } from './todo/todo.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  { path: 'To-do', component: TodoComponent },
-  { path: 'Notepad', component: NotepadComponent },
-  { path: 'Focus-mode', component: FocusModeComponent }
+  { path: '', component: FocusModeComponent, data:{order: 0}},
+  { path: 'Notepad', component: NotepadComponent, data: { order: 1 }},
+  { path: 'To-do', component: TodoComponent, data:{order: 2}}
+  
 
 ];
 

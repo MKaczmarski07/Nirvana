@@ -16,3 +16,11 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #b1b6bd;
   }
+
+  
+.textShdow{
+  text-shadow: -0.5px -0.5px 0 #333333, 
+              0.5px -0.5px 0 #333333, 
+              -0.5px 0.5px 0 #333333, 
+              0.5px 0.5px 0 #333333;
+}

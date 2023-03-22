@@ -1,5 +1,4 @@
 import { Component, OnInit, HostListener} from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { Item } from './item';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { CustomDateService } from '../date.service';
@@ -30,7 +29,6 @@ import { CustomDateService } from '../date.service';
 })
 export class TodoComponent implements OnInit {
   constructor(
-    private titleService: Title,
     private dateService: CustomDateService
   ) { }
 
@@ -43,7 +41,6 @@ export class TodoComponent implements OnInit {
   state = 'void';
   
   ngOnInit() {
-    this.titleService.setTitle('To Do');
     this.dateService.getCurrentDate()
     const savedTasks = localStorage.getItem('tasks');
     if (savedTasks) {

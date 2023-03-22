@@ -1,4 +1,4 @@
-<div class="md:h-screen h-[calc(100vh-4.3rem)] md:max-w-[80vw] md:w-[calc(100vw-15rem)] bg-background relative p-3 flex flex-col justify-between boundary"
+<div class=" h-screen relative p-3 flex flex-col justify-between boundary"
 >
 
 
@@ -54,9 +54,9 @@
               </svg>
         </div>
         <div class="my-3">
-            <iframe *ngIf="playerType==='lofi'" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3BOxfexQyBa1tsEZ1tJFVQ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <!-- <iframe *ngIf="playerType==='lofi'" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3BOxfexQyBa1tsEZ1tJFVQ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             <iframe *ngIf="playerType==='anime'" src="https://open.spotify.com/embed/album/0EFD2Rde1hYRbX9LS9qIZi?utm_source=generator&theme=0"  width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe *ngIf="playerType==='ambient'" src="https://open.spotify.com/embed/playlist/2MWM1xj3NsERH1m3h4i1B7?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe *ngIf="playerType==='ambient'" src="https://open.spotify.com/embed/playlist/2MWM1xj3NsERH1m3h4i1B7?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
         </div>
         
         <div class="flex gap-3 underline-offset-8">
@@ -68,7 +68,7 @@
     </div>
     </div>
 
-    <div class="w-[38vw] cursor-move absolute bottom-6 left-6 " cdkDragBoundary=".boundary" cdkDrag>
+    <div class="w-[38vw] cursor-move absolute top-6 left-6 " cdkDragBoundary=".boundary" cdkDrag>
         <div class="sm:flex justify-between hidden">
             <p class="lg:text-xl text-lg text-white textShdow">{{dateService.getCurrentDate()}}</p> 
             <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

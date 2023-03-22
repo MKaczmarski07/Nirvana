@@ -1,15 +1,18 @@
-<div class="md:h-screen h-[calc(100vh-4.3rem)] md:max-w-[80vw] md:w-[calc(100vw-15rem)] bg-background relative p-3 flex flex-col justify-between"
+<div class="w-screen h-screen flex justify-center">
+    <div class="overflow-hidden relative flex flex-col justify-center w-[90%] h-[80%] mt-[1.5rem] p-3 rounded-[10px] "
 *ngIf="!showNewNote && !isCurrentNoteOpened">
-   <div>
-        <div class="mb-3 text-greyText">
+
+   <div class="flex flex-col justify-center">
+        <div class="mb-3 text-white textShdow">
             <h1 class="text-4xl">Hello, Mikołaj</h1>
             <span class="text-2xl">You have {{numberOfNotes}} 
                 <span *ngIf="numberOfNotes === 1">note</span>
                 <span *ngIf="numberOfNotes !== 1">notes</span>
             </span>
         </div>
-        <div class="overflow-y-scroll md:max-h-[calc(100vh-7rem)] max-h-[calc(100vh-10.4rem)] md:max-w-[77.5vw]">
-                <ul class="flex flex-wrap gap-3 pb-6 md:pb-0">
+
+        <div class="flex overflow-y-scroll flex-col max-h-[64vh] items-center">
+                <ul class="flex flex-wrap gap-3 pb-6 xl:max-w-[67.6rem] ">
                     <li *ngFor="let note of notes; let i = index">
                         <app-note-miniature [note]="note" [index]="i" 
                         (openCurrentNote)="isCurrentNoteOpened=true"
@@ -17,22 +20,22 @@
                         ></app-note-miniature>
                     </li>
                 </ul>
-          
         </div>
    </div>
-    <div class="absolute bottom-3 right-3">
-        <button class="p-3  bg-[#363b90] rounded-[50%] shadow-md"  (click)="showNewNote=true">
-            <svg class="w-6 h-6" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+   <div class="absolute bottom-3 right-3">
+        <button class="p-3 bg-slate-100 bg-opacity-70 backdrop-blur-sm  rounded-[50%] shadow-md"  (click)="showNewNote=true">
+            <svg class="w-6 h-6" fill="none" stroke="#333333" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
             </svg>
         </button>
-    </div>
-    
+   </div>
 </div>
+    
 
 <app-new-note *ngIf="showNewNote" 
 (showNewNote)="showNewNote=false" 
-(sendNewNote)="addNote($event)">
+(sendNewNote)="addNote($event)"
+class="overflow-hidden relative flex flex-col justify-between w-[90%] h-[80%] mt-[1.5rem] bg-slate-100 bg-opacity-70 backdrop-blur-sm p-3 rounded-[10px]">
 </app-new-note>
 
 <app-note *ngIf="isCurrentNoteOpened" 
@@ -41,4 +44,5 @@
 (deleteNote)="deleteNote($event)"
 [note]="currentOpenedNote" 
 [index]="currentNoteIndex"
+class="overflow-hidden relative flex flex-col justify-between w-[90%] h-[80%] mt-[1.5rem] bg-slate-100 bg-opacity-70 backdrop-blur-sm p-3 rounded-[10px]"
  ></app-note>

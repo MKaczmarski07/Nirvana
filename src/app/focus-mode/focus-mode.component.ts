@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { CustomDateService } from '../date.service';
 
 @Component({
@@ -9,9 +8,9 @@ import { CustomDateService } from '../date.service';
 })
 export class FocusModeComponent {
   constructor(
-    private titleService: Title,
     public dateService: CustomDateService,
   ) { }
+
   startingMinutes = 20;
   time = this.startingMinutes * 60;
   seconds: number|string= '00' 
@@ -21,11 +20,7 @@ export class FocusModeComponent {
   timer: any;
   playerType: 'lofi' | 'anime' | 'ambient' = 'lofi';
  
-
-
-  ngOnInit() {
-    this.titleService.setTitle('Focus mode');
-  }
+  
 
   Fullscreen() {
     //Open/close fullscreen mode
@@ -40,7 +35,6 @@ export class FocusModeComponent {
   }
 
   muteAll() { }
-
 
 
   //Timer functions

@@ -1,6 +1,6 @@
-<div class="flex md:flex-row flex-col-reverse min-h-screen justify-between ">
-    <app-menu></app-menu>
-    <main class="w-full">
-        <router-outlet></router-outlet>
+<div class="flex h-screen justify-between ">
+    <app-menu class="absolute bottom-3 w-full flex justify-center"></app-menu>
+    <main class="w-full animatedBackground " [@routeAnimations]="prepareRoute(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
     </main>
 </div>
