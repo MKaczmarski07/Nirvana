@@ -2,6 +2,8 @@ import { Component,Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { Note } from '../note';
 import { CustomDateService } from 'src/app/date.service';
 import { EmptyNoteService } from 'src/app/empty-note.service';
+import {MatDialog} from '@angular/material/dialog';
+import { ConfirmDeletionComponent } from './confirm-deletion/confirm-deletion.component';
 
 
 @Component({
@@ -12,21 +14,23 @@ import { EmptyNoteService } from 'src/app/empty-note.service';
 export class NoteComponent {
   constructor(
     private dateService: CustomDateService,
-    public emptyNoteService: EmptyNoteService
+    public emptyNoteService: EmptyNoteService,
+    public dialog: MatDialog
   ) { }
 
-  @Output() closeCurrentNote = new EventEmitter<boolean>();
+  @Output() closeCurrentNote = new EventEmitter<boolean>(); // no loger used
   @Input() note!: Note;
   @Input() index!: number;
   @Output() updateNoteValue = new EventEmitter();
-  @Output() deleteNote = new EventEmitter<number>();;
-  confirmDeletion = false;
+  @Output() deleteNote = new EventEmitter<number>();
+  confirmDeletion = false; // no loger used
   displayedDate = this.dateService.getCurrentDate()
   editable = false;
 
   ngOnInit() {
     this.emptyNoteService.isEmpty = false;
     this.emptyNoteService.confirmLeaving = false;
+    
   }
 
   saveEditedNote() {
@@ -56,6 +60,18 @@ export class NoteComponent {
     }
   }
 
+  openDialog() {
+    //open dialog to confirm deletion
+    return this.dialog.open(ConfirmDeletionComponent, {
+      panelClass: 'confirm-deletion-dialog'
+    })
+      //subscribe to the afterClosed observable to check if the user confirmed deletion
+      .afterClosed().subscribe(result => {
+        if (result) {
+          this.deleteNote.emit(this.index);
+        }
+    })
+  }
  
   
 

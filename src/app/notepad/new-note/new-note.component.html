@@ -2,14 +2,14 @@
 >
 
     <div class="flex w-full justify-between">
-        <button class="p-3 bg-[#4e54c8] rounded-[10px]" 
+        <button class="p-3 bg-primary rounded-[10px]" 
         (click)="showNewNote.emit(); saveNewNote()">
             <svg class="w-6 h-6" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"></path>
               </svg>
         </button>
         <div class="flex gap-3 ">
-            <button class="p-3 bg-[#4e54c8] rounded-[10px]">
+            <button class="p-3 bg-primary rounded-[10px]">
                 <svg class="w-6 h-6" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"></path>
                   </svg>
@@ -19,7 +19,7 @@
     </div>
 
      
-    <div class="mt-3 text-greyText">
+    <div class="mt-3 text-primaryText">
       <input class="sm:text-3xl text-2xl overflow-ellipsis line-clamp-1 max-w-xl focus:outline-none bg-transparent placeholder-[#6c6f81]" type="text" placeholder="Title"  [(ngModel)]="noteTitle">
 
       <p>{{dateService.getCurrentDate()}}</p>

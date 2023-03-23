@@ -15,7 +15,10 @@ import { NoteMiniatureComponent } from './notepad/note-miniature/note-miniature.
 import { NewNoteComponent } from './notepad/new-note/new-note.component';
 import { NoteComponent } from './notepad/note/note.component';
 
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmDeletionComponent } from './notepad/note/confirm-deletion/confirm-deletion.component';
+import { LeaveAndDeleteComponent } from './notepad/note/leave-and-delete/leave-and-delete.component';
 
 
 
@@ -30,14 +33,17 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     ItemComponent,
     NoteMiniatureComponent,
     NewNoteComponent,
-    NoteComponent
+    NoteComponent,
+    ConfirmDeletionComponent,
+    LeaveAndDeleteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule
    
   ],
   providers: [Title],
