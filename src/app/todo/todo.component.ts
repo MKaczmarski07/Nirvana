@@ -1,6 +1,5 @@
-import { Component, OnInit, HostListener} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Item } from './item';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 import { CustomDateService } from '../date.service';
 
 
@@ -8,24 +7,7 @@ import { CustomDateService } from '../date.service';
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.css'],
-  animations: [
-    trigger('navSortEnabled', [
-      state('void', style({
-        right: '-9rem'
-      })),
-      state('show', style({
-        right: '0',
-      })),
-      state('hide', style({
-        right: '-9rem',
-  
-      })),
-      transition('show => hide', animate('300ms ease-in')),
-      transition('hide => show', animate('300ms ease-out')),
-      transition('void => show', animate('300ms ease-out'))
-    ])
-  ]
+  styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
   constructor(
@@ -37,8 +19,6 @@ export class TodoComponent implements OnInit {
   currentDay = this.dateService.getCurrentDate();
   fadeInOut = '';
   filter: 'all' | 'active' | 'done' | 'important' = 'all';
-  navSortEnabled = false;
-  state = 'void';
   
   ngOnInit() {
     this.dateService.getCurrentDate()
@@ -48,14 +28,15 @@ export class TodoComponent implements OnInit {
     }
   }
 
-
   saveToLocalStorage() {
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
   
   addItem(description: string) {
-    if (!description) return; // new description can't be an empty string
-    this.tasks.unshift({ // add item to the top of the list
+    //prevent from saving empty task
+    if (description.trim() === '') return; 
+    //add item to the top of the list
+    this.tasks.unshift({ 
       description,
       done: false,
       isImportant: false
@@ -69,20 +50,6 @@ export class TodoComponent implements OnInit {
     this.saveToLocalStorage()
   }
   
-
-  @HostListener('document:click', ['$event']) //Remove the dropdown menu when clicking outside of the input field
-  onClick(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    if ((!target.closest('.input-field'))) {
-      if (this.dropdownOpen) { //Toggle the fade out animation only if the dropdown menu is open
-        this.dropdownOpen = false;
-        this.fadeInOut = 'fadeOut';
-      }
-    }
-  }
-
-  
-  
   tasksfiltering() {
     if (this.filter==='active') {
       return (item:Item) => !item.done
@@ -94,14 +61,7 @@ export class TodoComponent implements OnInit {
     return (item:Item) => item
   }
   
-  navSort() {
-    this.navSortEnabled = !this.navSortEnabled;
-    if (this.navSortEnabled) {
-      this.state = 'show';
-    } else {
-      this.state = 'hide';
-    }
-  }
+  
 
   // taskSorting() {
   //   this.tasks.sort((a, b) => {
@@ -113,6 +73,7 @@ export class TodoComponent implements OnInit {
   //   });
   // }
   
+
 
   
 }

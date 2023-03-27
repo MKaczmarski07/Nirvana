@@ -14,11 +14,12 @@ import { FormsModule } from '@angular/forms';
 import { NoteMiniatureComponent } from './notepad/note-miniature/note-miniature.component';
 import { NewNoteComponent } from './notepad/new-note/new-note.component';
 import { NoteComponent } from './notepad/note/note.component';
+import { ConfirmDeletionComponent } from './notepad/note/confirm-deletion/confirm-deletion.component';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ConfirmDeletionComponent } from './notepad/note/confirm-deletion/confirm-deletion.component';
-import { LeaveAndDeleteComponent } from './notepad/note/leave-and-delete/leave-and-delete.component';
+import { MatChipsModule } from '@angular/material/chips';
+
 
 
 
@@ -34,8 +35,7 @@ import { LeaveAndDeleteComponent } from './notepad/note/leave-and-delete/leave-a
     NoteMiniatureComponent,
     NewNoteComponent,
     NoteComponent,
-    ConfirmDeletionComponent,
-    LeaveAndDeleteComponent
+    ConfirmDeletionComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +43,8 @@ import { LeaveAndDeleteComponent } from './notepad/note/leave-and-delete/leave-a
     BrowserAnimationsModule,
     FormsModule,
     DragDropModule,
-    MatDialogModule
+    MatDialogModule,
+    MatChipsModule
    
   ],
   providers: [Title],

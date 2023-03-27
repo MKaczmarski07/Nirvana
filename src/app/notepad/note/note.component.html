@@ -1,7 +1,7 @@
  <div class="relative p-3 flex flex-col justify-between">
     <div class="flex w-full justify-between">
         <button class="p-3 bg-primary rounded-[10px]" 
-        (click)="leaveAndDelete()">
+        (click)="leaveNote()">
             <svg class="w-6 h-6" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"></path>
               </svg>
@@ -13,7 +13,7 @@
                   </svg>
             </button>
             <button class="p-3 bg-primary rounded-[10px]"
-            (click)="openDialog()">
+            (click)="confirmDeletion()">
                 <svg class="w-6 h-6" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"></path>
                   </svg>
@@ -33,27 +33,4 @@
 </div> 
 
 
-<div *ngIf="emptyNoteService.confirmLeaving" class="absolute top-0 right-0 md:h-screen md:w-[80vw] w-screen h-[calc(100vh-4.2rem)] justify-center items-center flex  ">
-    <div class="bg-[#f6f6f6] p-6 rounded-[10px] shadow-md border-2 border-[#ececf0]">
-        <div class="text-center">
-            <p class="cursor-default text-primary text-xl">Are you sure you want to leave?</p>
-            <span class="cursor-default text-[#67696f]">Documents without content will be <span class="underline">deleted</span></span>
-        </div>
-        <div class="flex w-full justify-center gap-3 mt-3">
-            <button class="py-1 pr-3 pl-2 bg-primary rounded border-primary border-2 text-white flex"
-            (click)="deleteNote.emit(index)">
-                <svg class="h-6 w-6 mr-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"></path>
-                  </svg>
-            Leave
-            </button>
-            <button class="py-1 pr-3 pl-1 border-primary border-2 rounded text-primary flex"
-            (click)="emptyNoteService.confirmLeaving=false">
-            <svg class="h-6 w-6 mr-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>    
-            Cancel
-            </button>
-        </div>
-    </div>
-</div>
+

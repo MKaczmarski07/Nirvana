@@ -18,21 +18,15 @@ export class NoteComponent {
     public dialog: MatDialog
   ) { }
 
-  @Output() closeCurrentNote = new EventEmitter<boolean>(); // no loger used
+  @Output() closeCurrentNote = new EventEmitter<boolean>();
   @Input() note!: Note;
   @Input() index!: number;
   @Output() updateNoteValue = new EventEmitter();
   @Output() deleteNote = new EventEmitter<number>();
-  confirmDeletion = false; // no loger used
   displayedDate = this.dateService.getCurrentDate()
-  editable = false;
+  isEmpty = false;
 
-  ngOnInit() {
-    this.emptyNoteService.isEmpty = false;
-    this.emptyNoteService.confirmLeaving = false;
-    
-  }
-
+  
   saveEditedNote() {
     //send data to notepad.component 
     this.updateNoteValue.emit({index: this.index, note: this.note});
@@ -44,23 +38,21 @@ export class NoteComponent {
     if (this.note.content.trim() === '' && this.note.title.trim() === '') {
       //check if the note is empty
       //trim() method removes all whitespace and prevents the user from saving a note with only spaces
-      this.emptyNoteService.isEmpty = true;
+      this.isEmpty = true;
     } else {
-      this.emptyNoteService.isEmpty = false;
+      this.isEmpty = false;
     }
   }
 
-  leaveAndDelete() { 
-    if (this.emptyNoteService.isEmpty) {
-      // ask user if he wants to leave and delete the empty note
-      this.emptyNoteService.confirmLeaving = true;
-    } else {
-      //if the note is not empty, save it
-      this.closeCurrentNote.emit();
+  leaveNote() {
+    if (this.isEmpty) {
+      this.deleteNote.emit(this.index);
     }
+    else this.closeCurrentNote.emit(true);
   }
 
-  openDialog() {
+
+  confirmDeletion() {
     //open dialog to confirm deletion
     return this.dialog.open(ConfirmDeletionComponent, {
       panelClass: 'confirm-deletion-dialog'
