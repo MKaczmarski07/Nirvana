@@ -48,16 +48,3 @@
   background: #b1b6bd;
 }
 
-.toDoBackground{
-  background-image: url("../../assets/images/toDoBackground.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-color: #4e54c8;
-}
-
-@media (max-width: 768px) {
-  .toDoBackground{
-    background-image: url("../../assets/images/toDoBackground-mobile.svg");
-  }
-}
