@@ -48,8 +48,6 @@ export class ItemComponent {
       }
   }
   
-  
-
   markAsImportant() {
     this.item.isImportant = !this.item.isImportant;
     this.saveToLocalStorage.emit();

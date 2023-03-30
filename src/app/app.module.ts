@@ -19,6 +19,7 @@ import { ConfirmDeletionComponent } from './notepad/note/confirm-deletion/confir
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
+import { PlayerComponent } from './focus-mode/player/player.component';
 
 
 
@@ -35,7 +36,8 @@ import { MatChipsModule } from '@angular/material/chips';
     NoteMiniatureComponent,
     NewNoteComponent,
     NoteComponent,
-    ConfirmDeletionComponent
+    ConfirmDeletionComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
