@@ -20,6 +20,7 @@ export class PlayerComponent {
   musicFilePath !: string;
   musicArtist !: string;
   musicTitle !: string;
+  lengthOfPlaylist !: number;
 
   ngOnInit() { 
     this.getData();
@@ -32,13 +33,14 @@ export class PlayerComponent {
       .then(data => {
         console.log(data);
         this.music = data.music[this.musicIndex];
+        this.lengthOfPlaylist = data.music.length;
         this.musicFilePath = this.music.path;
         this.musicTitle = this.music.title;
         this.musicArtist = this.music.artist;
+        this.audio.src = this.musicFilePath;
       })
       .catch(error => console.error(error));
   }
-
 
   ngOnChanges() {
     this.muteSound();
@@ -51,7 +53,6 @@ export class PlayerComponent {
       this.isPaused = false;
     } else {
       // play the audio from the beginning
-      this.audio.src = this.musicFilePath;
       this.audio.load();
     }
     this.audio.play();
@@ -66,7 +67,30 @@ export class PlayerComponent {
 
   muteSound() {
     this.isMuted ? this.audio.volume = 0 : this.audio.volume = 1;
-   }
+  }
+
+  nextSong() {
+    if (this.musicIndex === this.lengthOfPlaylist - 1) { 
+      //console.log('end of playlist');
+      this.musicIndex = -1;
+    } 
+    this.musicIndex++;
+    this.getData();
+    this.pauseSound()
+    
+  
+  }
+
+  previousSong() {
+    if (this.musicIndex === 0) {
+      //console.log('beginning of playlist');
+      this.musicIndex = this.lengthOfPlaylist;
+    }
+    this.musicIndex--;
+    this.getData();
+    this.pauseSound()
+    
+  }
 
  
 }

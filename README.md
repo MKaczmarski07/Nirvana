@@ -10,7 +10,7 @@
  The main goal is to make an all-in-one productivity application, designed to help users effectively manage their daily tasks, take notes and focus. With its intuitive interface and a comprehensive set of features, this application will simplify the process of organizing daily routine and achieving goals.
 
 ## Features 📋
-**Focus place**
+**Focus space**
 - Lofi music player
 - Pomodoro productivity timmer
 
@@ -31,11 +31,24 @@
 **Notepad**
 - voice input
 
+**Music player**
+- Autoplay
+- More music genres
+
 ## Technological facilities 🛠️
-- Application is based on Angular 15. Navigation is handled using built-in RouterModule. To facilitate communication between components I have used Angular's EventEmitters and @Input/@Output decorators.
-- Two-way data binding is handled using Angular's FormsModule. 
-- Since the project is strictly frontend, the data is stored in the browser's local storage.
-- UI is mainly done with the TailwindCSS framework, CSS and Material UI.
+
+### Main architecture 
+- Application is based on Angular 15. Navigation is handled using built-in *RouterModule*. To facilitate communication between components I have used Angular's *EventEmitters* and @Input/@Output decorators.
+- *Two-way data* binding is handled using Angular's FormsModule. 
+- UI is mainly done with the *TailwindCSS* framework, CSS and *Material UI*.
+  
+### How data is stored?
+- Since the project is strictly frontend, the data is stored in the *browser's local storage*.
+
+### How music player works?
+- music files are stored locally, song related information such as title and artist are stored in a *JSON file*
+- Data from JSON is implemented in the code using the fetch api. 
+- The player works based on the native HTMLAudioElement
 
 ## Installation Guide ⚙️
 This project is based on Angular framework and uses TailwindCSS and MaterialUI libraries. Here's a step-by-step guide to help you get started with the project.
