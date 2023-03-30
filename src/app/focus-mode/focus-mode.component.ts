@@ -19,7 +19,7 @@ export class FocusModeComponent {
   timerType: 'pomodoro' | 'shortB' | 'longB' = 'pomodoro';
   timer: any;
 
-  playerType: 'lofi' | 'anime' | 'ambient' = 'lofi';
+
   isMuted = false;
   
  
