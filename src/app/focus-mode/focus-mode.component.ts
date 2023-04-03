@@ -1,48 +1,43 @@
 import { Component } from '@angular/core';
 import { CustomDateService } from '../date.service';
+import { MusicService } from '../music.service';
 
 @Component({
   selector: 'app-focus-mode',
   templateUrl: './focus-mode.component.html',
-  styleUrls: ['./focus-mode.component.css']
+  styleUrls: ['./focus-mode.component.css'],
 })
 export class FocusModeComponent {
   constructor(
     public dateService: CustomDateService,
-  ) { }
+    public musicService: MusicService
+  ) {}
 
   startingMinutes = 20;
   time = this.startingMinutes * 60;
-  seconds: number|string= '00' 
-  minutes: number | string = 20; 
-  timerButton: 'start' | 'stop' = 'start'
+  seconds: number | string = '00';
+  minutes: number | string = 20;
+  timerButton: 'start' | 'stop' = 'start';
   timerType: 'pomodoro' | 'shortB' | 'longB' = 'pomodoro';
   timer: any;
 
-
   isMuted = false;
-  
- 
-  
 
   Fullscreen() {
     //Open/close fullscreen mode
-    const elem = document.documentElement
+    const elem = document.documentElement;
     if (elem.requestFullscreen) {
       elem.requestFullscreen();
     }
     if (document.exitFullscreen) {
       document.exitFullscreen();
     }
-
   }
-
-  muteAll() { }
-
 
   //Timer functions
 
   //Wydzielić timer do zewnętrznego serwisu z globalną zmienną przechowującą wartość i stan timera
+
   Timer() {
     this.seconds = this.time % 60;
     this.minutes = Math.floor(this.time / 60);
@@ -50,19 +45,18 @@ export class FocusModeComponent {
     this.minutes = this.minutes < 10 ? '0' + this.minutes : this.minutes;
     this.seconds = this.seconds < 10 ? '0' + this.seconds : this.seconds;
     //reset timer when the countdown is over
-    if (this.time === 0) this.resetTimer()
+    if (this.time === 0) this.resetTimer();
     this.time--;
-
   }
 
   startTimer() {
     this.timerButton = 'stop';
-    this.Timer()
+    this.Timer();
     this.timer = setInterval(() => this.Timer(), 1000);
   }
 
   stopTimer() {
-    this.timerButton='start';
+    this.timerButton = 'start';
     clearInterval(this.timer);
   }
 
@@ -75,7 +69,7 @@ export class FocusModeComponent {
   }
 
   timerShortBreak() {
-    this.resetTimer()
+    this.resetTimer();
     this.timerType = 'shortB';
     this.startingMinutes = 5;
     this.time = this.startingMinutes * 60;
@@ -84,7 +78,7 @@ export class FocusModeComponent {
   }
 
   timerLongBreak() {
-    this.resetTimer()
+    this.resetTimer();
     this.timerType = 'longB';
     this.startingMinutes = 15;
     this.time = this.startingMinutes * 60;
@@ -92,21 +86,12 @@ export class FocusModeComponent {
     this.seconds = '00';
   }
 
-  timerPomodoro() { 
-    this.resetTimer()
+  timerPomodoro() {
+    this.resetTimer();
     this.timerType = 'pomodoro';
     this.startingMinutes = 20;
     this.time = this.startingMinutes * 60;
     this.minutes = 20;
     this.seconds = '00';
   }
-
-
-  
-
 }
-
-
-  
-  
-
