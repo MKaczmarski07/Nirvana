@@ -16,6 +16,7 @@ export class MusicService {
   musicArtist!: string;
   musicTitle!: string;
   lengthOfPlaylist!: number;
+  isPlayerVisible = true;
 
   constructor() {}
 

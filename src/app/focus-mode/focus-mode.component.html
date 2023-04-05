@@ -2,6 +2,46 @@
   <div class="absolute top-3 right-3 flex flex-col justify-end gap-3">
     <div class="flex gap-3 justify-end">
       <button
+        class="p-3 rounded-[10px] bg-slate-100 bg-opacity-70 backdrop-blur-sm"
+        (click)="timerService.isTimerVisible = !timerService.isTimerVisible"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+      </button>
+      <button
+        class="p-3 rounded-[10px] bg-slate-100 bg-opacity-70 backdrop-blur-sm"
+        (click)="musicService.isPlayerVisible = !musicService.isPlayerVisible"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
+          ></path>
+        </svg>
+      </button>
+      <button
         (click)="
           musicService.isMuted = !musicService.isMuted; musicService.muteSound()
         "
@@ -60,28 +100,20 @@
           ></path>
         </svg>
       </button>
-      <button
-        class="p-3 rounded-[10px] bg-slate-100 bg-opacity-70 backdrop-blur-sm"
-      >
-        <svg
-          class="h-6 w-6"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          ></path>
-        </svg>
-      </button>
     </div>
-    <app-timer cdkDragBoundary=".boundary " cdkDrag> </app-timer>
-    <app-player dkDragBoundary=".boundary" cdkDrag></app-player>
+    <app-timer
+      *ngIf="timerService.isTimerVisible"
+      [@toggleVisibility]
+      cdkDragBoundary=".boundary "
+      cdkDrag
+    >
+    </app-timer>
+    <app-player
+      *ngIf="musicService.isPlayerVisible"
+      [@toggleVisibility]
+      dkDragBoundary=".boundary"
+      cdkDrag
+    ></app-player>
   </div>
 
   <div

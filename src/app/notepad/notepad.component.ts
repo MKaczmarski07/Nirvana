@@ -3,18 +3,17 @@ import { CustomDateService } from '../date.service';
 import { EmptyNoteService } from '../empty-note.service';
 import { Note } from '../notepad/note';
 
-
 @Component({
   selector: 'app-notepad',
   templateUrl: './notepad.component.html',
-  styleUrls: ['./notepad.component.css']
+  styleUrls: ['./notepad.component.css'],
 })
 export class NotepadComponent {
   constructor(
     private dateService: CustomDateService,
     public emptyNoteService: EmptyNoteService
-  ) { }
-  
+  ) {}
+
   notes: Note[] = [];
   numberOfNotes = 0;
   @Input() showNewNote = false;
@@ -22,22 +21,19 @@ export class NotepadComponent {
   @Input() currentNoteIndex!: number;
   currentOpenedNote!: Note;
 
-  
-  
   ngOnInit() {
     this.dateService.getCurrentDate();
-    this.getNotesFromLocalStorage()
-    
+    this.getNotesFromLocalStorage();
   }
 
-  addNote(note: Note) { 
+  addNote(note: Note) {
     //add new note to the array
-    if(note.content === '' && note.title === '') return
-    this.notes.unshift({ 
+    if (note.content === '' && note.title === '') return;
+    this.notes.unshift({
       title: note.title,
       content: note.content,
-      date: note.date
-    })
+      date: note.date,
+    });
     this.saveToLocalStorage();
     //update the number of notes
     this.numberOfNotes = this.notes.length;
@@ -55,19 +51,18 @@ export class NotepadComponent {
     }
     //get the number of notes
     this.numberOfNotes = this.notes.length;
-   }
+  }
 
   findCurrentNote(index: number) {
     //find the currently open note based on the index and send it to note-component
-     this.currentOpenedNote = this.notes[index];
-     this.currentNoteIndex = index;
+    this.currentOpenedNote = this.notes[index];
+    this.currentNoteIndex = index;
+  }
 
-   }
-    
-  updateNoteValue(index: number, note: Note) { 
+  updateNoteValue(index: number, note: Note) {
     //update the note value in the array
     this.notes[index] = note;
-    this.saveToLocalStorage()
+    this.saveToLocalStorage();
   }
 
   deleteNote(index: number) {
@@ -81,9 +76,4 @@ export class NotepadComponent {
     //if the note was deleted, clicking on the menu will not open the popup
     this.emptyNoteService.isEmpty = false;
   }
-
-
-  
-
-
 }

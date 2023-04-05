@@ -15,16 +15,11 @@ import { NoteMiniatureComponent } from './notepad/note-miniature/note-miniature.
 import { NewNoteComponent } from './notepad/new-note/new-note.component';
 import { NoteComponent } from './notepad/note/note.component';
 import { ConfirmDeletionComponent } from './notepad/note/confirm-deletion/confirm-deletion.component';
-
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
 import { PlayerComponent } from './focus-mode/player/player.component';
 import { TimerComponent } from './focus-mode/timer/timer.component';
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -39,7 +34,7 @@ import { TimerComponent } from './focus-mode/timer/timer.component';
     NoteComponent,
     ConfirmDeletionComponent,
     PlayerComponent,
-    TimerComponent
+    TimerComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,10 +43,9 @@ import { TimerComponent } from './focus-mode/timer/timer.component';
     FormsModule,
     DragDropModule,
     MatDialogModule,
-    MatChipsModule
-   
+    MatChipsModule,
   ],
   providers: [Title],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
