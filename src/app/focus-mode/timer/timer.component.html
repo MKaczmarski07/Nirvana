@@ -1,0 +1,77 @@
+<div
+  class="cursor-move bg-slate-100 bg-opacity-70 backdrop-blur-sm w-[20rem] p-3 rounded-[10px] text-greyText"
+  cdkDragBoundary=".boundary "
+  cdkDrag
+>
+  <div class="flex justify-between">
+    <p>Timer</p>
+    <svg
+      class="w-6 h-6 cursor-pointer"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"></path>
+    </svg>
+  </div>
+  <div class="flex items-center justify-between my-1">
+    <div class="flex items-center justify-between">
+      <span class="text-6xl"
+        >{{ timerService.minutes }}:{{ timerService.seconds }}</span
+      >
+      <button
+        *ngIf="timerService.timerButton === 'start'"
+        (click)="timerService.startTimer()"
+        class="py-1 px-3 border-black border-2 rounded ml-12"
+      >
+        Start
+      </button>
+      <button
+        *ngIf="timerService.timerButton === 'stop'"
+        (click)="timerService.stopTimer()"
+        class="py-1 px-3 border-black border-2 rounded ml-12"
+      >
+        Stop
+      </button>
+    </div>
+    <svg
+      (click)="timerService.resetTimer()"
+      class="w-6 h-6 cursor-pointer"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+      ></path>
+    </svg>
+  </div>
+  <div class="flex gap-3 underline-offset-8">
+    <button
+      (click)="timerService.timerPomodoro()"
+      [ngClass]="{ underline: timerService.timerType === 'pomodoro' }"
+    >
+      Pomodoro
+    </button>
+    <button
+      (click)="timerService.timerShortBreak()"
+      [ngClass]="{ underline: timerService.timerType === 'shortB' }"
+    >
+      Short Break
+    </button>
+    <button
+      (click)="timerService.timerLongBreak()"
+      [ngClass]="{ underline: timerService.timerType === 'longB' }"
+    >
+      Long Break
+    </button>
+  </div>
+</div>

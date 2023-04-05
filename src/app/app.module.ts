@@ -20,6 +20,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
 import { PlayerComponent } from './focus-mode/player/player.component';
+import { TimerComponent } from './focus-mode/timer/timer.component';
 
 
 
@@ -37,7 +38,8 @@ import { PlayerComponent } from './focus-mode/player/player.component';
     NewNoteComponent,
     NoteComponent,
     ConfirmDeletionComponent,
-    PlayerComponent
+    PlayerComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,

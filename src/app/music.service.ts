@@ -61,6 +61,7 @@ export class MusicService {
 
   muteSound() {
     this.isMuted ? (this.audio.volume = 0) : (this.audio.volume = 1);
+    console.log(this.audio.volume);
   }
 
   nextSong() {
