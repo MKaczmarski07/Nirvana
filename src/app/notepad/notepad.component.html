@@ -4,7 +4,7 @@
     *ngIf="!showNewNote && !isCurrentNoteOpened"
   >
     <div class="flex flex-col justify-center">
-      <div class="mb-3 text-white textShdow">
+      <div class="mb-3 text-white textShadow">
         <h1 class="text-4xl">Hello, Mikołaj</h1>
         <span class="text-2xl"
           >You have {{ numberOfNotes }}
@@ -14,6 +14,12 @@
       </div>
 
       <div class="flex overflow-y-scroll flex-col max-h-[64vh] items-center">
+        <div *ngIf="notes.length === 0" class="flex mt-6">
+          <img
+            class="h-auto w-[10rem]"
+            src="../../assets/Images/empty-notepad.svg"
+          />
+        </div>
         <ul class="flex flex-wrap gap-3 pb-6 xl:max-w-[67.6rem]">
           <li *ngFor="let note of notes; let i = index">
             <app-note-miniature

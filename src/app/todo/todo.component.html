@@ -1,20 +1,39 @@
 <div class="w-screen h-screen flex justify-center">
-  <div class="overflow-hidden relative flex flex-col justify-between w-[90%] h-[80%]  mt-[1.5rem]  bg-slate-100 bg-opacity-70 backdrop-blur-sm p-3 rounded-[10px]">
+  <div
+    class="overflow-hidden relative flex flex-col justify-between w-[90%] h-[80%] mt-[1.5rem] bg-slate-100 bg-opacity-70 backdrop-blur-sm p-3 rounded-[10px]"
+  >
     <div>
-      <div>
-        <h1 class="text-3xl text-greyText">My Tasks</h1>
-        <p class="text-greyText">{{ currentDay }}</p>
+      <div class="text-primary">
+        <h1 class="text-4xl">Hello, Mikołaj</h1>
+        <span class="text-2xl"
+          >You have {{ numberOfTasks }}
+          <span *ngIf="numberOfTasks === 1">task</span>
+          <span *ngIf="numberOfTasks !== 1">tasks</span>
+        </span>
       </div>
       <div class="mt-3 flex flex-col justify-between">
-        <mat-chip-listbox aria-label="task filtering" class="flex my-3 w-full gap-3 text-[#8f8fa1]">
-          <mat-chip-option selected (click)="filter='all'">All</mat-chip-option>
-          <mat-chip-option (click)="filter='active'">To do</mat-chip-option>
-          <mat-chip-option (click)="filter='done'">Done</mat-chip-option>
-          <mat-chip-option (click)="filter='important'">important</mat-chip-option>
+        <mat-chip-listbox
+          aria-label="task filtering"
+          class="flex my-3 w-full gap-3 text-[#8f8fa1]"
+        >
+          <mat-chip-option selected (click)="filter = 'all'"
+            >All</mat-chip-option
+          >
+          <mat-chip-option (click)="filter = 'active'">To do</mat-chip-option>
+          <mat-chip-option (click)="filter = 'done'">Done</mat-chip-option>
+          <mat-chip-option (click)="filter = 'important'"
+            >important</mat-chip-option
+          >
         </mat-chip-listbox>
-
+        <div class="flex w-full justify-center">
+          <img
+            class="h-auto w-[8rem] mt-12"
+            *ngIf="tasks.length === 0"
+            src="../../assets/Images/empty-todoList.svg"
+          />
+        </div>
         <ul
-          class="max-w-full max-h-[calc(100vh-23rem)] overflow-y-scroll box-border flex flex-col gap-3 py-3"
+          class="max-w-full sm:max-h-[calc(100vh-26rem)] max-h-[calc(100vh-24rem)] overflow-y-scroll box-border flex flex-col gap-3 py-3"
           [ngSwitch]="filter"
         >
           <ng-container *ngSwitchCase="'all'">
@@ -57,7 +76,9 @@
       </div>
     </div>
 
-    <div class="mx-3 mb-[0.85rem] rounded-[10px] justify-between shadow-md bg-white input-field relative">
+    <div
+      class="mx-3 mb-[0.85rem] rounded-[10px] justify-between shadow-md bg-white input-field relative"
+    >
       <span class="absolute bottom-2 left-0 flex items-center pl-2">
         <svg
           class="h-6 w-6"
@@ -84,4 +105,4 @@
       />
     </div>
   </div>
-</div>  
+</div>
