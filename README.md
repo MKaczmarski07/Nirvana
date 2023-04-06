@@ -12,10 +12,14 @@ The main goal is to make an all-in-one productivity application, designed to hel
 
 **Focus space**
 
+![home](./src/assets/Images/Mockup/home.webp)
+
 - Lofi music player
 - Pomodoro productivity timmer
 
 **Task list**
+
+![To do](./src/assets/Images/Mockup/todo.webp)
 
 - Adding user-written tasks
 - Editing and deleting existing tasks
@@ -23,6 +27,9 @@ The main goal is to make an all-in-one productivity application, designed to hel
 - Filtering tasks by category
 
 **Notepad**
+
+![Notepad](./src/assets/Images/Mockup/Notepad.webp)
+![Note](./src/assets/Images/Mockup/note.webp)
 
 - creating user-written notes
 - Editing and deleting existing notes
