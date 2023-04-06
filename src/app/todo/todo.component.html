@@ -4,7 +4,7 @@
   >
     <div>
       <div class="text-primary">
-        <h1 class="text-4xl">Hello, Mikołaj</h1>
+        <h1 class="text-4xl">Hello, {{ getNameService.userName }}</h1>
         <span class="text-2xl"
           >You have {{ numberOfTasks }}
           <span *ngIf="numberOfTasks === 1">task</span>

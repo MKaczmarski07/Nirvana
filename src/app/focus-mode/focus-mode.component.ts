@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CustomDateService } from '../date.service';
 import { MusicService } from '../music.service';
 import { TimerService } from '../timer.service';

@@ -107,43 +107,20 @@
       class="flex justify-center"
       *ngIf="timerService.isTimerVisible"
       [@toggleVisibility]
-      cdkDragBoundary=".boundary "
-      cdkDrag
     >
     </app-timer>
     <app-player
       class="flex justify-center"
       *ngIf="musicService.isPlayerVisible"
       [@toggleVisibility]
-      dkDragBoundary=".boundary"
-      cdkDrag
     ></app-player>
   </div>
 
-  <div
-    class="w-[38vw] cursor-move absolute top-6 left-6"
-    cdkDragBoundary=".boundary"
-    cdkDrag
-  >
+  <div class="w-[38vw] absolute top-6 left-6 quote">
     <div class="sm:flex justify-between hidden">
       <p class="lg:text-xl text-lg text-white textShdow">
         {{ dateService.getCurrentDate() }}
       </p>
-      <svg
-        class="w-6 h-6 cursor-pointer"
-        fill="none"
-        stroke="white"
-        stroke-width="1.5"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M18 12H6"
-        ></path>
-      </svg>
     </div>
     <p
       class="text-white xl:text-3xl lg:text-2xl text-xl textShdow sm:block hidden"

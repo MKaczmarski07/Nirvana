@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from './item';
 import { CustomDateService } from '../date.service';
+import { GetNameService } from '../get-name.service';
 
 @Component({
   selector: 'app-todo',
@@ -8,7 +9,10 @@ import { CustomDateService } from '../date.service';
   styleUrls: ['./todo.component.css'],
 })
 export class TodoComponent implements OnInit {
-  constructor(private dateService: CustomDateService) {}
+  constructor(
+    private dateService: CustomDateService,
+    public getNameService: GetNameService
+  ) {}
 
   tasks: Item[] = [];
   dropdownOpen = false;

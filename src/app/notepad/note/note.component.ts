@@ -1,35 +1,33 @@
-import { Component,Output, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { Note } from '../note';
 import { CustomDateService } from 'src/app/date.service';
 import { EmptyNoteService } from 'src/app/empty-note.service';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDeletionComponent } from './confirm-deletion/confirm-deletion.component';
-
 
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
-  styleUrls: ['./note.component.css']
+  styleUrls: ['./note.component.css'],
 })
 export class NoteComponent {
   constructor(
     private dateService: CustomDateService,
     public emptyNoteService: EmptyNoteService,
     public dialog: MatDialog
-  ) { }
+  ) {}
 
   @Output() closeCurrentNote = new EventEmitter<boolean>();
   @Input() note!: Note;
   @Input() index!: number;
   @Output() updateNoteValue = new EventEmitter();
   @Output() deleteNote = new EventEmitter<number>();
-  displayedDate = this.dateService.getCurrentDate()
+  displayedDate = this.dateService.getCurrentDate();
   isEmpty = false;
 
-  
   saveEditedNote() {
-    //send data to notepad.component 
-    this.updateNoteValue.emit({index: this.index, note: this.note});
+    //send data to notepad.component
+    this.updateNoteValue.emit({ index: this.index, note: this.note });
     //change date only if the note was edited
     this.note.date = this.dateService.getCurrentDate();
   }
@@ -47,24 +45,23 @@ export class NoteComponent {
   leaveNote() {
     if (this.isEmpty) {
       this.deleteNote.emit(this.index);
-    }
-    else this.closeCurrentNote.emit(true);
+    } else this.closeCurrentNote.emit(true);
   }
-
 
   confirmDeletion() {
     //open dialog to confirm deletion
-    return this.dialog.open(ConfirmDeletionComponent, {
-      panelClass: 'confirm-deletion-dialog'
-    })
-      //subscribe to the afterClosed observable to check if the user confirmed deletion
-      .afterClosed().subscribe(result => {
-        if (result) {
-          this.deleteNote.emit(this.index);
-        }
-    })
+    return (
+      this.dialog
+        .open(ConfirmDeletionComponent, {
+          panelClass: 'confirm-deletion-dialog',
+        })
+        //subscribe to the afterClosed observable to check if the user confirmed deletion
+        .afterClosed()
+        .subscribe((result) => {
+          if (result) {
+            this.deleteNote.emit(this.index);
+          }
+        })
+    );
   }
- 
-  
-
- }
+}

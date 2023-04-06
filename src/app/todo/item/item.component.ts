@@ -39,15 +39,18 @@ export class ItemComponent {
     this.saveToLocalStorage.emit();
   }
 
-  @HostListener('document:click', ['$event']) 
+  @HostListener('document:click', ['$event'])
   //remove the empty task only when the user clicks outside of the task
   onClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
-    if ((!target.closest('.item-component')) && this.editedItemValue.trim()==='') {
+    if (
+      !target.closest('.item-component') &&
+      this.editedItemValue.trim() === ''
+    ) {
       this.remove.emit();
-      }
+    }
   }
-  
+
   markAsImportant() {
     this.item.isImportant = !this.item.isImportant;
     this.saveToLocalStorage.emit();
