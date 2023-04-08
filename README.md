@@ -89,6 +89,13 @@ Your application is ready at port 4200.
 
     http://localhost:4200/
 
+## License and Copyrights 📜
+
+- The application is publicly available under the MIT license.
+- The project is educational and is not used for commercial purposes
+- Music was taken from https://pixabay.com and is not mine. To honor the authors, my music player also displays the artist name.
+- Animated background of the application is a GIF taken from https://giphy.com
+
 ## Special thanks 🙏🏽
 
 Special thanks to my fiancee - for inspiration, motivation and invaluable manual tests.
