@@ -49,7 +49,7 @@
     <p>{{ displayedDate }}</p>
 
     <textarea
-      class="overflow-scroll break-words h-[20rem] pr-3 pb-3 mt-6 focus:outline-none w-full resize-none bg-transparent placeholder-[#6c6f81]"
+      class="overflow-scroll break-words h-[calc(100vh-20rem)] file:pr-3 pb-3 mt-6 focus:outline-none w-full resize-none bg-transparent placeholder-[#6c6f81]"
       placeholder="Your notes..."
       [(ngModel)]="note.content"
       (ngModelChange)="saveEditedNote(); checkIfEmpty()"

@@ -18,7 +18,12 @@ export class MusicService {
   lengthOfPlaylist!: number;
   isPlayerVisible = true;
 
-  constructor() {}
+  constructor() {
+    // play the next song when the current one ends
+    this.audio.addEventListener('ended', () => {
+      this.nextSong();
+    });
+  }
 
   ngOnInit() {
     this.getData();
@@ -37,6 +42,9 @@ export class MusicService {
         this.musicTitle = this.music.title;
         this.musicArtist = this.music.artist;
         this.audio.src = this.musicFilePath;
+        if (this.isMusicPlaying) {
+          this.playSound();
+        }
       })
       .catch((error) => console.error(error));
   }
@@ -72,7 +80,6 @@ export class MusicService {
     }
     this.musicIndex++;
     this.getData();
-    this.pauseSound();
   }
 
   previousSong() {
@@ -82,6 +89,5 @@ export class MusicService {
     }
     this.musicIndex--;
     this.getData();
-    this.pauseSound();
   }
 }
