@@ -2,7 +2,7 @@
 
 ## Live example 🌐
 
-_This option will be added in the future_
+https://nirvana-cf5b9.web.app
 
 ## About ✍️
 

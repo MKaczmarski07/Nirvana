@@ -20,6 +20,11 @@ import { MatChipsModule } from '@angular/material/chips';
 import { PlayerComponent } from './focus-mode/player/player.component';
 import { TimerComponent } from './focus-mode/timer/timer.component';
 import { GetNameComponent } from './get-name/get-name.component';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from './firebase';
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
