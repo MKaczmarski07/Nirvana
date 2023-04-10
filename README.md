@@ -42,7 +42,6 @@ The main goal is to make an all-in-one productivity application, designed to hel
 
 **Music player**
 
-- Autoplay
 - More music genres
 
 ## Technological facilities 🛠️

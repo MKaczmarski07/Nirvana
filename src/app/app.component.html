@@ -1,4 +1,4 @@
-<div class="animatedBackground w-screen h-screen overflow-hidden">
+<div class="animatedBackground w-screen h-screen max-h-screen overflow-hidden">
   <app-get-name
     [@toggleVisibility]
     class="w-full h-screen flex items-center"
@@ -8,9 +8,11 @@
   <div
     [@toggleVisibility]
     *ngIf="getNameService.userName !== ''"
-    class="flex h-screen justify-between"
+    class="flex h-screen max-h-screen justify-between"
   >
-    <app-menu class="absolute bottom-3 w-full flex justify-center"></app-menu>
+    <app-menu
+      class="absolute bottom-3 w-full sm:flex hidden justify-center"
+    ></app-menu>
     <main class="w-full" [@routeAnimations]="prepareRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>
     </main>

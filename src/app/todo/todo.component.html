@@ -1,6 +1,6 @@
-<div class="w-screen h-screen flex justify-center">
+<div class="w-screen h-screen flex flex-col items-center">
   <div
-    class="overflow-hidden relative flex flex-col justify-between w-[90%] h-[80%] mt-[1.5rem] bg-slate-100 bg-opacity-70 backdrop-blur-sm p-3 rounded-[10px]"
+    class="overflow-hidden relative flex flex-col justify-between w-[90%] sm:h-[80%] h-[calc(93vh-3rem)] mt-[1.5rem] bg-slate-100 bg-opacity-70 backdrop-blur-sm p-3 rounded-[10px]"
   >
     <div>
       <div class="text-primary">
@@ -104,5 +104,28 @@
         class="bg-[#e0e0e0] placeholder:italic pr-2 pl-10 py-2 rounded-t-[10px] border border-slate-300 focus:outline-none focus:border-primary hover:border-primary w-full rounded-[10px]"
       />
     </div>
+  </div>
+
+  <div class="flex mt-[0.75rem] justify-center items-center">
+    <button
+      routerLink="/"
+      class="p-3 rounded-[50%] bg-slate-100 bg-opacity-70 backdrop-blur-sm sm:hidden block"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 19.5L8.25 12l7.5-7.5"
+        ></path>
+      </svg>
+    </button>
   </div>
 </div>
