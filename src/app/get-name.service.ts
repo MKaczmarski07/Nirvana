@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 export class GetNameService {
   constructor() {}
 
-  userName: string = '';
+  userName = '';
+  showError = false;
 
   getName() {
     const savedName = localStorage.getItem('userName');
@@ -14,8 +15,12 @@ export class GetNameService {
   }
 
   addName(name: string) {
+    if (name.trim() === '') {
+      this.showError = true;
+      return;
+    }
     this.userName = name;
-    console.log(this.userName);
+    this.showError = false;
     this.saveToLocalStorage();
   }
 
