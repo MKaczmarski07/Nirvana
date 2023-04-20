@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { TodoComponent } from './todo/todo.component';
@@ -15,11 +15,13 @@ import { NoteMiniatureComponent } from './notepad/note-miniature/note-miniature.
 import { NewNoteComponent } from './notepad/new-note/new-note.component';
 import { NoteComponent } from './notepad/note/note.component';
 import { ConfirmDeletionComponent } from './notepad/note/confirm-deletion/confirm-deletion.component';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatChipsModule } from '@angular/material/chips';
 import { PlayerComponent } from './focus-mode/player/player.component';
 import { TimerComponent } from './focus-mode/timer/timer.component';
 import { GetNameComponent } from './get-name/get-name.component';
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatChipsModule } from '@angular/material/chips';
+
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './firebase';
 

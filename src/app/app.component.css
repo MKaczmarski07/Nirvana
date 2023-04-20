@@ -1,5 +1,5 @@
-.animatedBackground {
-  background-image: url(../assets/Images/nature.gif);
+.Background {
+  background-image: url(../assets/Images/bg1.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
 }

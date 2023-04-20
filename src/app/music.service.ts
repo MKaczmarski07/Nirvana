@@ -17,6 +17,7 @@ export class MusicService {
   musicTitle!: string;
   lengthOfPlaylist!: number;
   isPlayerVisible = true;
+  volume = 1;
 
   constructor() {
     // play the next song when the current one ends
@@ -69,8 +70,12 @@ export class MusicService {
   }
 
   muteSound() {
-    this.isMuted ? (this.audio.volume = 0) : (this.audio.volume = 1);
-    console.log(this.audio.volume);
+    this.isMuted ? (this.audio.volume = 0) : (this.audio.volume = this.volume);
+  }
+
+  setVolume(volume: number) {
+    // set the volume of the audio based on the slider value
+    this.audio.volume = volume;
   }
 
   nextSong() {
