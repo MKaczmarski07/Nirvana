@@ -8,7 +8,7 @@ import {
   group,
   animate,
 } from '@angular/animations';
-import { GetNameService } from './get-name.service';
+import { UserDataService } from './user-data.service';
 
 @Component({
   selector: 'app-root',
@@ -119,10 +119,10 @@ import { GetNameService } from './get-name.service';
   ],
 })
 export class AppComponent {
-  constructor(public getNameService: GetNameService) {}
+  constructor(public UserDataService: UserDataService) {}
 
   ngOnInit() {
-    this.getNameService.getName();
+    this.UserDataService.getName();
   }
 
   prepareRoute(outlet: RouterOutlet) {

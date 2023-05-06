@@ -1,0 +1,31 @@
+<div class="bg-secondary w-[50rem] h-full p-3 rounded-[10px] text-textPrimary">
+  <div class="flex flex-col justify-center">
+    <div class="sm:mb-3 mb-3 text-white textShadow">
+      <h1 class="text-4xl">Hello, {{ userDataService.userName }}</h1>
+      <div>
+        <span *ngIf="userDataService.numberOfNotes !== 0" class="text-2xl"
+          >You have {{ userDataService.numberOfNotes }}
+          <span *ngIf="userDataService.numberOfNotes === 1">note</span>
+          <span *ngIf="userDataService.numberOfNotes !== 1">notes</span>
+        </span>
+        <span *ngIf="userDataService.numberOfNotes === 0" class="text-2xl"
+          >You don't have any notes
+        </span>
+      </div>
+      <div>
+        <span *ngIf="userDataService.numberOfTasks !== 0" class="text-2xl"
+          >You have {{ userDataService.numberOfTasks }}
+          <span *ngIf="userDataService.numberOfTasks === 1">task</span>
+          <span *ngIf="userDataService.numberOfTasks !== 1">tasks</span>
+        </span>
+        <span *ngIf="userDataService.numberOfTasks === 0" class="text-2xl"
+          >You don't have any tasks
+        </span>
+      </div>
+    </div>
+
+    <div
+      class="flex overflow-y-scroll flex-col sm:max-h-[64vh] max-h-[90vh] items-center sm:pb-0 pb-6"
+    ></div>
+  </div>
+</div>

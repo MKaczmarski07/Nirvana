@@ -3,11 +3,13 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class GetNameService {
+export class UserDataService {
   constructor() {}
 
   userName = '';
   showError = false;
+  numberOfNotes = 2;
+  numberOfTasks = 3;
 
   getName() {
     const savedName = localStorage.getItem('userName');

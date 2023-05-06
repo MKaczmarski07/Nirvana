@@ -1,28 +1,39 @@
-<div class="w-screen h-screen flex justify-center">
+<div class="w-screen h-screen flex">
   <div
-    class="overflow-hidden relative flex flex-col justify-between w-[90%] sm:h-[80%] h-full sm:mt-[1.5rem] my:my-[1.5rem] p-3 rounded-[10px]"
+    class="overflow-y-scroll relative flex flex-col w-full h-full p-6"
     *ngIf="!showNewNote && !isCurrentNoteOpened"
   >
-    <div class="flex flex-col justify-center">
-      <div class="sm:mb-3 my-3 text-white textShadow">
-        <h1 class="text-4xl">Hello, {{ getNameService.userName }}</h1>
-        <span class="text-2xl"
-          >You have {{ numberOfNotes }}
-          <span *ngIf="numberOfNotes === 1">note</span>
-          <span *ngIf="numberOfNotes !== 1">notes</span>
-        </span>
-      </div>
-
-      <div
-        class="flex overflow-y-scroll flex-col sm:max-h-[64vh] max-h-[90vh] items-center sm:pb-0 pb-6"
+    <button routerLink="/" class="flex text-textPrimary gap-2 text-xl">
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="#ffffffde"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
       >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+        ></path>
+      </svg>
+      <span> Go back </span>
+    </button>
+
+    <div class="flex flex-col">
+      <h1 class="text-4xl text-textPrimary my-6">My Notes</h1>
+
+      <div class="flex">
         <div *ngIf="notes.length === 0" class="flex mt-6">
           <img
-            class="h-auto w-[10rem]"
+            width="150 px"
+            height="150 px"
             src="../../assets/Images/empty-notepad.svg"
           />
         </div>
-        <ul class="flex flex-wrap gap-3 pb-6 xl:max-w-[67.6rem]">
+        <ul class="flex flex-wrap gap-3">
           <li *ngFor="let note of notes; let i = index">
             <app-note-miniature
               [note]="note"
@@ -34,57 +45,33 @@
         </ul>
       </div>
     </div>
-    <div
-      class="absolute bottom-3 right-3 md:right-6 flex flex-row-reverse gap-3"
-    >
-      <button
-        class="p-3 bg-slate-100 bg-opacity-70 backdrop-blur-sm rounded-[50%] shadow-md"
-        (click)="showNewNote = true"
+  </div>
+
+  <div class="fixed bottom-6 right-6">
+    <button class="p-3 bg-[#73677d] rounded-[50%]" (click)="showNewNote = true">
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="#ffffffde"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
       >
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="#333333"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 4.5v15m7.5-7.5h-15"
-          ></path>
-        </svg>
-      </button>
-      <button
-        routerLink="/"
-        class="p-3 rounded-[50%] bg-slate-100 bg-opacity-70 backdrop-blur-sm sm:hidden block"
-      >
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15.75 19.5L8.25 12l7.5-7.5"
-          ></path>
-        </svg>
-      </button>
-    </div>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 4.5v15m7.5-7.5h-15"
+        ></path>
+      </svg>
+    </button>
   </div>
 
   <app-new-note
     *ngIf="showNewNote"
     (showNewNote)="showNewNote = false"
     (sendNewNote)="addNote($event)"
-    class="overflow-hidden relative flex flex-col justify-between w-[90%] sm:h-[80%] h-[calc(100vh-3rem)] mt-[1.5rem] bg-slate-100 bg-opacity-70 backdrop-blur-sm p-3 rounded-[10px]"
+    class="overflow-hidden relative flex flex-col justify-between w-full h-full"
   >
   </app-new-note>
 
@@ -95,6 +82,6 @@
     (deleteNote)="deleteNote($event)"
     [note]="currentOpenedNote"
     [index]="currentNoteIndex"
-    class="overflow-hidden relative flex flex-col justify-between w-[90%] sm:h-[80%] h-[calc(100vh-3rem)] mt-[1.5rem] bg-slate-100 bg-opacity-70 backdrop-blur-sm p-3 rounded-[10px]"
+    class="relative flex flex-col justify-between w-full h-full"
   ></app-note>
 </div>

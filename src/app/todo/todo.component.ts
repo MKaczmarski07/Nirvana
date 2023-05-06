@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from './item';
 import { CustomDateService } from '../date.service';
-import { GetNameService } from '../get-name.service';
+import { UserDataService } from '../user-data.service';
 
 @Component({
   selector: 'app-todo',
@@ -11,7 +11,7 @@ import { GetNameService } from '../get-name.service';
 export class TodoComponent implements OnInit {
   constructor(
     private dateService: CustomDateService,
-    public getNameService: GetNameService
+    public userDataService: UserDataService
   ) {}
 
   tasks: Item[] = [];

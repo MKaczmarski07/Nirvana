@@ -1,18 +1,18 @@
-<div class="Background w-screen h-screen max-h-screen overflow-hidden">
+<div class="bg-background w-screen min-h-screen overflow-hidden">
   <app-get-name
     [@toggleVisibility]
     class="w-full h-screen flex items-center"
-    *ngIf="getNameService.userName === ''"
+    *ngIf="UserDataService.userName === ''"
   ></app-get-name>
 
   <div
     [@toggleVisibility]
-    *ngIf="getNameService.userName !== ''"
+    *ngIf="UserDataService.userName !== ''"
     class="flex h-screen max-h-screen justify-between"
   >
-    <app-menu
+    <!-- <app-menu
       class="absolute bottom-3 w-full sm:flex hidden justify-center"
-    ></app-menu>
+    ></app-menu> -->
     <main class="w-full" [@routeAnimations]="prepareRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>
     </main>

@@ -6,17 +6,20 @@
     class="w-[20vh] max-w-[20rem] h-auto"
   />
   <h1 class="text-4xl text-primary font-[500]">Nirvana</h1>
-  <h2 *ngIf="!getNameService.showError" class="text-xl text-primary">
+  <h2 *ngIf="!userDataService.showError" class="text-xl text-primary">
     Enter your name
   </h2>
-  <h2 *ngIf="getNameService.showError" class="text-xl text-red-700 text-center">
+  <h2
+    *ngIf="userDataService.showError"
+    class="text-xl text-red-700 text-center"
+  >
     The name should contain at least one letter
   </h2>
   <input
     #name
     type="text"
     placeholder="Your name"
-    (keyup.enter)="getNameService.addName(name.value); name.value = ''"
+    (keyup.enter)="userDataService.addName(name.value); name.value = ''"
     required
     minlength="4"
     class="bg-[#e0e0e0] placeholder:italic px-2 py-2 rounded-t-[10px] border border-slate-300 focus:outline-none focus:border-primary hover:border-primary max-w-[20rem] w-[90%] rounded-[10px]"

@@ -1,6 +1,4 @@
-<div
-  class="bg-slate-100 bg-opacity-70 backdrop-blur-sm w-[20rem] p-3 rounded-[10px] text-greyText"
->
+<div class="bg-secondary w-[20rem] p-3 rounded-[10px] text-textPrimary">
   <div class="flex justify-between">
     <p>Timer</p>
     <svg
@@ -24,14 +22,14 @@
       <button
         *ngIf="timerService.timerButton === 'start'"
         (click)="timerService.startTimer()"
-        class="py-1 px-3 border-black border-2 rounded ml-12"
+        class="py-1 px-3 border-[#ffffffde] border-2 rounded ml-12"
       >
         Start
       </button>
       <button
         *ngIf="timerService.timerButton === 'stop'"
         (click)="timerService.stopTimer()"
-        class="py-1 px-3 border-black border-2 rounded ml-12"
+        class="py-1 px-3 border-[#ffffffde] border-2 rounded ml-12"
       >
         Stop
       </button>

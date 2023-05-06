@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GetNameService } from '../get-name.service';
+import { UserDataService } from '../user-data.service';
 
 @Component({
   selector: 'app-get-name',
@@ -7,5 +7,5 @@ import { GetNameService } from '../get-name.service';
   styleUrls: ['./get-name.component.css'],
 })
 export class GetNameComponent {
-  constructor(public getNameService: GetNameService) {}
+  constructor(public userDataService: UserDataService) {}
 }

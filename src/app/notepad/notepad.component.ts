@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CustomDateService } from '../date.service';
 import { EmptyNoteService } from '../empty-note.service';
-import { GetNameService } from '../get-name.service';
+import { UserDataService } from '../user-data.service';
 import { Note } from '../notepad/note';
 
 @Component({
@@ -13,7 +13,7 @@ export class NotepadComponent {
   constructor(
     private dateService: CustomDateService,
     public emptyNoteService: EmptyNoteService,
-    public getNameService: GetNameService
+    public userDataService: UserDataService
   ) {}
 
   notes: Note[] = [];

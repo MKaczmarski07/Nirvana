@@ -24,6 +24,7 @@ import { MatChipsModule } from '@angular/material/chips';
 
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './firebase';
+import { DashboardComponent } from './focus-mode/dashboard/dashboard.component';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -43,6 +44,7 @@ const app = initializeApp(firebaseConfig);
     PlayerComponent,
     TimerComponent,
     GetNameComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
