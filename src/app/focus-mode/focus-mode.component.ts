@@ -2,21 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CustomDateService } from '../date.service';
 import { MusicService } from '../music.service';
 import { TimerService } from '../timer.service';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-focus-mode',
   templateUrl: './focus-mode.component.html',
   styleUrls: ['./focus-mode.component.css'],
-  animations: [
-    trigger('toggleVisibility', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('200ms ease-in', style({ opacity: 1 })),
-      ]),
-      transition(':leave', [animate('200ms ease-in', style({ opacity: 0 }))]),
-    ]),
-  ],
 })
 export class FocusModeComponent {
   constructor(

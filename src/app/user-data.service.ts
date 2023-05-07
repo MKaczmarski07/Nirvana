@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Item } from './todo/item';
 
 @Injectable({
   providedIn: 'root',
@@ -8,12 +9,26 @@ export class UserDataService {
 
   userName = '';
   showError = false;
-  numberOfNotes = 2;
-  numberOfTasks = 3;
+  userTasks: Item[] = [];
 
   getName() {
     const savedName = localStorage.getItem('userName');
     if (savedName) this.userName = JSON.parse(savedName);
+  }
+
+  getTasks() {
+    const savedTasks = localStorage.getItem('tasks');
+    if (savedTasks) {
+      this.userTasks = JSON.parse(savedTasks);
+    }
+  }
+
+  getNumberOfTasks() {
+    return this.userTasks.length;
+  }
+
+  getNumberOfCompletedTasks() {
+    return this.userTasks.filter((task: Item) => task.done === true).length;
   }
 
   addName(name: string) {

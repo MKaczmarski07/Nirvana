@@ -1,26 +1,23 @@
 <div class="bg-secondary w-[50rem] h-full p-3 rounded-[10px] text-textPrimary">
   <div class="flex flex-col justify-center">
-    <div class="sm:mb-3 mb-3 text-white textShadow">
+    <div class="sm:mb-3 mb-3 text-white">
       <h1 class="text-4xl">Hello, {{ userDataService.userName }}</h1>
-      <div>
-        <span *ngIf="userDataService.numberOfNotes !== 0" class="text-2xl"
-          >You have {{ userDataService.numberOfNotes }}
-          <span *ngIf="userDataService.numberOfNotes === 1">note</span>
-          <span *ngIf="userDataService.numberOfNotes !== 1">notes</span>
-        </span>
-        <span *ngIf="userDataService.numberOfNotes === 0" class="text-2xl"
-          >You don't have any notes
-        </span>
+      <h2 class="text-xl">Lets Work!</h2>
+      <p>
+        You have {{ this.userDataService.getNumberOfTasks() }} tasks for today
+      </p>
+      <div class="chart w-[10rem]">
+        <canvas id="myChart"></canvas>
       </div>
-      <div>
-        <span *ngIf="userDataService.numberOfTasks !== 0" class="text-2xl"
-          >You have {{ userDataService.numberOfTasks }}
-          <span *ngIf="userDataService.numberOfTasks === 1">task</span>
-          <span *ngIf="userDataService.numberOfTasks !== 1">tasks</span>
-        </span>
-        <span *ngIf="userDataService.numberOfTasks === 0" class="text-2xl"
-          >You don't have any tasks
-        </span>
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center">
+          <span>Completed</span>
+          <span>{{ completedTasks }}</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span>In Progress</span>
+          <span>{{ toDoTasks }}</span>
+        </div>
       </div>
     </div>
 

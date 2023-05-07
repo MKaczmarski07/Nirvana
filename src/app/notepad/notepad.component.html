@@ -47,8 +47,11 @@
     </div>
   </div>
 
-  <div class="fixed bottom-6 right-6">
-    <button class="p-3 bg-[#73677d] rounded-[50%]" (click)="showNewNote = true">
+  <div
+    *ngIf="!showNewNote && !isCurrentNoteOpened"
+    class="fixed bottom-6 right-6"
+  >
+    <button class="p-3 bg-primary rounded-[50%]" (click)="showNewNote = true">
       <svg
         class="w-6 h-6"
         fill="none"

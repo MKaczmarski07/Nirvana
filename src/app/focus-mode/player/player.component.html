@@ -1,42 +1,30 @@
 <div class="bg-secondary w-[20rem] rounded-[10px] text-textPrimary p-3">
-  <div class="flex justify-between mb-3">
+  <div class="flex justify-between mb-3 text-xl font-[500]">
     <p>Player</p>
-    <svg
-      (click)="musicService.isPlayerVisible = false"
-      class="w-6 h-6 cursor-pointer"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1.5"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"></path>
-    </svg>
   </div>
 
   <div class="flex gap-3 underline-offset-8">
     <button
       (click)="musicService.playerType = 'lofi'"
-      [ngClass]="{ underline: musicService.playerType === 'lofi' }"
+      [ngClass]="{ activePlayer: musicService.playerType === 'lofi' }"
     >
       Lofi
     </button>
     <button
       (click)="musicService.playerType = 'anime'"
-      [ngClass]="{ underline: musicService.playerType === 'anime' }"
+      [ngClass]="{ activePlayer: musicService.playerType === 'anime' }"
     >
       Anime
     </button>
     <button
       (click)="musicService.playerType = 'ambient'"
-      [ngClass]="{ underline: musicService.playerType === 'ambient' }"
+      [ngClass]="{ activePlayer: musicService.playerType === 'ambient' }"
     >
       Ambient
     </button>
   </div>
 
-  <div *ngIf="musicService.playerType === 'lofi'">
+  <div>
     <div class="flex gap-3 justify-center my-3">
       <button (click)="musicService.previousSong()">
         <svg
@@ -172,14 +160,5 @@
       <p class="text-xl font-[500]">{{ musicService.musicTitle }}</p>
       <p>{{ musicService.musicArtist }}</p>
     </div>
-  </div>
-
-  <div
-    *ngIf="
-      musicService.playerType === 'anime' ||
-      musicService.playerType === 'ambient'
-    "
-  >
-    <p class="py-3">This option will be added in the future</p>
   </div>
 </div>

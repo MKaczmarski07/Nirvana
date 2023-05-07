@@ -14,7 +14,6 @@ export class TimerService {
   timerType: 'pomodoro' | 'shortB' | 'longB' = 'pomodoro';
   timer: any;
   timerCycles = 0;
-  isTimerVisible = true;
 
   Timer() {
     this.seconds = this.time % 60;

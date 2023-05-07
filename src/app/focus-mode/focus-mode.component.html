@@ -4,12 +4,12 @@
   >
     <button
       (click)="toggleFullscreen()"
-      class="p-3 rounded-[10px] bg-secondary bg-opacity-70 backdrop-blur-sm"
+      class="p-3 rounded-[10px] bg-secondary text-textPrimary hover:text-primary transition-all duration-100"
     >
       <svg
         class="h-6 w-6"
         fill="none"
-        stroke="#ffffffde"
+        stroke="currentColor"
         stroke-width="1.5"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
@@ -23,50 +23,13 @@
       </svg>
     </button>
     <button
-      class="p-3 rounded-[10px] bg-secondary bg-opacity-70 backdrop-blur-sm"
-      (click)="timerService.isTimerVisible = !timerService.isTimerVisible"
+      routerLink="/Notepad"
+      class="p-3 rounded-[10px] bg-secondary text-textPrimary hover:text-primary transition-all duration-100"
     >
       <svg
         class="h-6 w-6"
         fill="none"
-        stroke="#ffffffde"
-        stroke-width="1.5"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-        ></path>
-      </svg>
-    </button>
-    <button
-      class="p-3 rounded-[10px] bg-secondary bg-opacity-70 backdrop-blur-sm"
-      (click)="musicService.isPlayerVisible = !musicService.isPlayerVisible"
-    >
-      <svg
-        class="h-6 w-6"
-        fill="none"
-        stroke="#ffffffde"
-        stroke-width="1.5"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
-        ></path>
-      </svg>
-    </button>
-    <button routerLink="/Notepad" class="p-3 rounded-[10px] bg-secondary">
-      <svg
-        class="h-6 w-6"
-        fill="none"
-        stroke="#ffffffde"
+        stroke="currentColor"
         stroke-width="1.5"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
@@ -79,11 +42,14 @@
         ></path>
       </svg>
     </button>
-    <button routerLink="/To-do" class="p-3 rounded-[10px] bg-secondary">
+    <button
+      routerLink="/To-do"
+      class="p-3 rounded-[10px] bg-secondary text-textPrimary hover:text-primary transition-all duration-100"
+    >
       <svg
         class="h-6 w-6"
         fill="none"
-        stroke="#ffffffde"
+        stroke="currentColor"
         stroke-width="1.5"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
@@ -101,17 +67,8 @@
   <div class="sm:absolute sm:top-3 sm:right-3 flex gap-3">
     <app-dashboard></app-dashboard>
     <div class="flex flex-col sm:justify-end justify-center gap-3">
-      <app-timer
-        class="flex justify-center"
-        *ngIf="timerService.isTimerVisible"
-        [@toggleVisibility]
-      >
-      </app-timer>
-      <app-player
-        class="flex justify-center"
-        *ngIf="musicService.isPlayerVisible"
-        [@toggleVisibility]
-      ></app-player>
+      <app-timer class="flex justify-center"> </app-timer>
+      <app-player class="flex justify-center"></app-player>
     </div>
   </div>
 

@@ -1,0 +1,5 @@
+.activeTimer {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  color: #1b95e0;
+}

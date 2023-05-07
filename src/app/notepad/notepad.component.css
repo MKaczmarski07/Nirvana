@@ -1,23 +1,19 @@
-/* <--- SCROLL-BAR ---> */
+/* <--- CUSTOM SCROLL-BAR ---> */
 ::-webkit-scrollbar {
-  width: 0.4em;
+  width: 0.6em;
   border-radius: 10px;
 }
 
-@media (max-width: 640px) {
-  ::-webkit-scrollbar {
-    display: none;
-  }
-}
 ::-webkit-scrollbar-track {
   background: transparent;
+  width: 0.6em;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d1d4d7;
+  background: #3e3e3e;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b1b6bd;
+  background: #4e4e4e;
 }
