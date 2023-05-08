@@ -3,7 +3,7 @@
   -webkit-appearance: none;
   height: 1.5rem;
   width: 1.5rem;
-  background-color: #cacaca;
+  background-color: #424a71;
   border-radius: 5px;
   cursor: pointer;
   display: flex;
@@ -21,7 +21,7 @@
 }
 
 .custom-checkbox:hover {
-  background-color: #b4b3b3;
+  background-color: #4e588b;
 }
 
 .custom-checkbox:checked {

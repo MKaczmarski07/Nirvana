@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { EmptyNoteService } from '../empty-note.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +6,16 @@ import { EmptyNoteService } from '../empty-note.service';
   styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent {
-  constructor(public emptyNoteService: EmptyNoteService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.emptyNoteService.confirmLeaving = false;
+  toggleFullscreen() {
+    //Open/close fullscreen mode
+    const elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    }
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
   }
 }

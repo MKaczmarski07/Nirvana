@@ -63,14 +63,4 @@ export class TodoComponent implements OnInit {
     }
     return (item: Item) => item;
   }
-
-  // taskSorting() {
-  //   this.tasks.sort((a, b) => {
-  //     if (a.done === b.done) {
-  //       return a.description.localeCompare(b.description); // comparison based on description
-  //     } else {
-  //       return a.done ? 1 : -1; //comparison based on done property status
-  //     }
-  //   });
-  // }
 }

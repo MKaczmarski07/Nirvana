@@ -8,9 +8,9 @@ module.exports = {
         md: "960px",
       },
       colors: {
-        background: "#121212",
+        background: "#1e1e38",
         primary: "#1B95E0",
-        secondary: "#2B2B2B",
+        secondary: "#262948",
         textPrimary: "#ffffffde",
       },
     },

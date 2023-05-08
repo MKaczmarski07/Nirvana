@@ -1,4 +1,4 @@
-<div class="bg-secondary w-[50rem] h-full p-3 rounded-[10px] text-textPrimary">
+<div class="bg-secondary w-[20rem] h-full p-3 rounded-[10px] text-textPrimary">
   <div class="flex flex-col justify-center">
     <div class="sm:mb-3 mb-3 text-white">
       <h1 class="text-4xl">Hello, {{ userDataService.userName }}</h1>
@@ -6,17 +6,21 @@
       <p>
         You have {{ this.userDataService.getNumberOfTasks() }} tasks for today
       </p>
-      <div class="chart w-[10rem]">
+      <div class="chart w-[10rem] relative my-6 mx-auto">
         <canvas id="myChart"></canvas>
+        <span
+          class="absolute bottom-[50%] left-[50%] translate-x-[-50%] translate-y-[50%] text-textPrimary text-xl"
+          >{{ completedTasksPercentage }} %</span
+        >
       </div>
-      <div class="flex gap-3">
+      <div class="flex gap-6 w-full justify-center">
         <div class="flex flex-col items-center">
           <span>Completed</span>
-          <span>{{ completedTasks }}</span>
+          <span class="text-xl font-bold">{{ completedTasks }}</span>
         </div>
         <div class="flex flex-col items-center">
           <span>In Progress</span>
-          <span>{{ toDoTasks }}</span>
+          <span class="text-xl font-bold">{{ toDoTasks }}</span>
         </div>
       </div>
     </div>

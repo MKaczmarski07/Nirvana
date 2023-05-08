@@ -10,9 +10,6 @@
     *ngIf="UserDataService.userName !== ''"
     class="flex h-screen max-h-screen justify-between"
   >
-    <!-- <app-menu
-      class="absolute bottom-3 w-full sm:flex hidden justify-center"
-    ></app-menu> -->
     <main class="w-full" [@routeAnimations]="prepareRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>
     </main>

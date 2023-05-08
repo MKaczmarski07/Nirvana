@@ -14,15 +14,4 @@ export class FocusModeComponent {
     public musicService: MusicService,
     public timerService: TimerService
   ) {}
-
-  toggleFullscreen() {
-    //Open/close fullscreen mode
-    const elem = document.documentElement;
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    }
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
-  }
 }
