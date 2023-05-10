@@ -51,24 +51,42 @@
         />
       </div>
 
-      <mat-chip-listbox
-        aria-label="task filtering"
-        class="flex my-3 w-full gap-3 text-[#8f8fa1] text-sm sm:text-base"
-      >
-        <mat-chip-option selected (click)="filter = 'all'">All</mat-chip-option>
-        <mat-chip-option (click)="filter = 'active'">To do</mat-chip-option>
-        <mat-chip-option (click)="filter = 'done'">Done</mat-chip-option>
-        <mat-chip-option (click)="filter = 'important'"
-          >important</mat-chip-option
+      <div class="flex my-3 w-full gap-3 text-[#8f8fa1] text-sm sm:text-base">
+        <button
+          class="inline-flex items-center px-3 py-1.5 bg-accent text-textPrimary rounded-full text-sm"
+          (click)="filter = 'all'"
+          [ngClass]="{ 'bg-primary': filter === 'all' }"
         >
-      </mat-chip-listbox>
+          <span>All</span>
+        </button>
+        <button
+          class="inline-flex items-center px-3 py-1.5 bg-accent text-textPrimary rounded-full text-sm"
+          (click)="filter = 'active'"
+          [ngClass]="{ 'bg-primary': filter === 'active' }"
+        >
+          <span>To do</span>
+        </button>
+        <button
+          class="inline-flex items-center px-3 py-1.5 bg-accent text-textPrimary rounded-full text-sm"
+          (click)="filter = 'done'"
+          [ngClass]="{ 'bg-primary': filter === 'done' }"
+        >
+          <span>Done</span>
+        </button>
+        <button
+          class="inline-flex items-center px-3 py-1.5 bg-accent text-textPrimary rounded-full text-sm"
+          (click)="filter = 'important'"
+          [ngClass]="{ 'bg-primary': filter === 'important' }"
+        >
+          <span>Important</span>
+        </button>
+      </div>
       <div class="flex flex-col justify-between">
-        <div class="flex w-full justify-center">
+        <div *ngIf="tasks.length === 0" class="flex h-full items-center">
           <img
-            width="120px"
-            height="120px"
-            class="mt-12"
-            *ngIf="tasks.length === 0"
+            class="mx-auto mt-[10%]"
+            width="150 px"
+            height="150 px"
             src="../../assets/Images/empty-todoList.svg"
           />
         </div>
@@ -115,28 +133,5 @@
         </ul>
       </div>
     </div>
-  </div>
-
-  <div class="flex mt-[0.75rem] justify-center items-center">
-    <button
-      routerLink="/"
-      class="p-3 rounded-[50%] bg-slate-100 bg-opacity-70 backdrop-blur-sm sm:hidden block"
-    >
-      <svg
-        class="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M15.75 19.5L8.25 12l7.5-7.5"
-        ></path>
-      </svg>
-    </button>
   </div>
 </div>

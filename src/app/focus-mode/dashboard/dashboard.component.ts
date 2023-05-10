@@ -21,9 +21,20 @@ export class DashboardComponent implements OnInit {
     this.allTasks = this.userDataService.getNumberOfTasks();
     this.completedTasks = this.userDataService.getNumberOfCompletedTasks();
     this.toDoTasks = this.allTasks - this.completedTasks;
-    this.completedTasksPercentage = Math.round(
-      (this.completedTasks / this.allTasks) * 100
-    );
+    if (this.allTasks !== 0) {
+      this.completedTasksPercentage = Math.round(
+        (this.completedTasks / this.allTasks) * 100
+      );
+    } else {
+      this.completedTasksPercentage = 0;
+    }
+  }
+
+  SetchartData() {
+    if (this.toDoTasks === 0 && this.completedTasks === 0) {
+      return [1, 0];
+    }
+    return [this.toDoTasks, this.completedTasks];
   }
 
   ngOnInit() {
@@ -35,7 +46,7 @@ export class DashboardComponent implements OnInit {
       data: {
         datasets: [
           {
-            data: [this.toDoTasks, this.completedTasks],
+            data: this.SetchartData(),
             backgroundColor: ['#424a71', '#1B95E0'],
             borderColor: ['#424a71', '#1B95E0'],
             borderWidth: 1,

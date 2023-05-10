@@ -3,7 +3,7 @@
     class="overflow-y-scroll relative flex flex-col w-full h-full p-6"
     *ngIf="!showNewNote && !isCurrentNoteOpened"
   >
-    <button routerLink="/" class="flex text-textPrimary gap-2 text-xl">
+    <button routerLink="/" class="flex text-textPrimary gap-2 text-xl z-10">
       <svg
         class="w-6 h-6"
         fill="none"
@@ -23,11 +23,15 @@
     </button>
 
     <div class="flex flex-col">
-      <h1 class="text-4xl text-textPrimary my-6">My Notes</h1>
+      <h1 class="text-4xl text-textPrimary my-6 z-10">My Notes</h1>
 
-      <div class="flex w-full">
-        <div *ngIf="notes.length === 0" class="flex mt-6">
+      <div class="flex w-full flex-col">
+        <div
+          *ngIf="notes.length === 0"
+          class="flex absolute h-full w-full top-0 left-0"
+        >
           <img
+            class="m-auto"
             width="150 px"
             height="150 px"
             src="../../assets/Images/empty-notepad.svg"
@@ -53,7 +57,7 @@
     *ngIf="!showNewNote && !isCurrentNoteOpened"
     class="fixed bottom-6 right-6"
   >
-    <button class="p-3 bg-primary rounded-[50%]" (click)="showNewNote = true">
+    <button class="p-3 bg-accent rounded-[50%]" (click)="showNewNote = true">
       <svg
         class="w-6 h-6"
         fill="none"

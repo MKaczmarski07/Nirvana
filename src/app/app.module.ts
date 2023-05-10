@@ -19,12 +19,10 @@ import { PlayerComponent } from './focus-mode/player/player.component';
 import { TimerComponent } from './focus-mode/timer/timer.component';
 import { GetNameComponent } from './get-name/get-name.component';
 
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatChipsModule } from '@angular/material/chips';
-
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './firebase';
 import { DashboardComponent } from './focus-mode/dashboard/dashboard.component';
+import { ChangeNameComponent } from './change-name/change-name.component';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -45,14 +43,13 @@ const app = initializeApp(firebaseConfig);
     TimerComponent,
     GetNameComponent,
     DashboardComponent,
+    ChangeNameComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatDialogModule,
-    MatChipsModule,
   ],
   providers: [Title],
   bootstrap: [AppComponent],

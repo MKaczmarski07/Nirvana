@@ -13,12 +13,16 @@
     <button
       (click)="musicService.playerType = 'anime'"
       [ngClass]="{ activePlayer: musicService.playerType === 'anime' }"
+      disabled
+      class="cursor-not-allowed"
     >
       Anime
     </button>
     <button
       (click)="musicService.playerType = 'ambient'"
       [ngClass]="{ activePlayer: musicService.playerType === 'ambient' }"
+      disabled
+      class="cursor-not-allowed"
     >
       Ambient
     </button>

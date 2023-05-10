@@ -118,11 +118,11 @@ import { UserDataService } from './user-data.service';
     ]),
   ],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor(public UserDataService: UserDataService) {}
 
   ngOnInit() {
-    this.UserDataService.getName();
+    this.UserDataService.getData();
   }
 
   prepareRoute(outlet: RouterOutlet) {

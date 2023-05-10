@@ -9,11 +9,14 @@ export class UserDataService {
 
   userName = '';
   showError = false;
+  isDataValid = false;
   userTasks: Item[] = [];
 
-  getName() {
-    const savedName = localStorage.getItem('userName');
-    if (savedName) this.userName = JSON.parse(savedName);
+  getData() {
+    const savedData = localStorage.getItem('userData');
+    if (savedData) {
+      this.userName = JSON.parse(savedData);
+    }
   }
 
   getTasks() {
@@ -42,6 +45,6 @@ export class UserDataService {
   }
 
   saveToLocalStorage() {
-    localStorage.setItem('userName', JSON.stringify(this.userName));
+    localStorage.setItem('userData', JSON.stringify(this.userName));
   }
 }

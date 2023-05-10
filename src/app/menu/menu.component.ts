@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserDataService } from '../user-data.service';
 
 @Component({
   selector: 'app-menu',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent {
-  constructor() {}
+  constructor(public userDataService: UserDataService) {}
 
   toggleFullscreen() {
     //Open/close fullscreen mode

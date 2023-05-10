@@ -1,6 +1,6 @@
 <div class="relative flex flex-col h-full p-6">
   <div class="flex w-full justify-between">
-    <button class="p-3 bg-primary rounded-[10px]" (click)="leaveNote()">
+    <button class="p-3 bg-accent rounded-[10px]" (click)="leaveNote()">
       <svg
         class="w-6 h-6"
         fill="none"
@@ -18,7 +18,7 @@
       </svg>
     </button>
     <div class="flex gap-3">
-      <button class="p-3 bg-primary rounded-[10px]" (click)="confirmDeletion()">
+      <button class="p-3 bg-accent rounded-[10px]" (click)="confirmDeletion()">
         <svg
           class="w-6 h-6"
           fill="none"
@@ -57,3 +57,10 @@
     </textarea>
   </div>
 </div>
+
+<app-confirm-deletion
+  *ngIf="isDialogOpen"
+  (closeDialog)="isDialogOpen = false"
+  (deleteNote)="deleteNote.emit(this.index)"
+  [isDialogOpen]="isDialogOpen"
+></app-confirm-deletion>

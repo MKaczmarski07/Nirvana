@@ -1,27 +1,27 @@
 <div
-  class="overflow-hidden relative p-3 flex flex-col bg-slate-100 bg-opacity-70 backdrop-blur-sm sm:w-[70%] w-[90%] h-[60%] mx-auto rounded-[10px] justify-center items-center gap-3"
+  class="overflow-hidden relative p-3 flex flex-col mx-auto rounded-[10px] justify-center items-center gap-3"
 >
   <img
     src="../../assets/Images/Nirvana.svg"
     class="w-[20vh] max-w-[20rem] h-auto"
   />
-  <h1 class="text-4xl text-primary font-[500]">Nirvana</h1>
-  <h2 *ngIf="!userDataService.showError" class="text-xl text-primary">
-    Enter your name
+  <h1 class="text-4xl text-primary font-[500] mb-6">Nirvana</h1>
+  <h2 *ngIf="!userDataService.showError" class="text-xl text-textPrimary">
+    What's your name?
   </h2>
   <h2
     *ngIf="userDataService.showError"
     class="text-xl text-red-700 text-center"
   >
-    The name should contain at least one letter
+    This field should contain at least one letter
   </h2>
   <input
     #name
     type="text"
-    placeholder="Your name"
+    placeholder="Name"
     (keyup.enter)="userDataService.addName(name.value); name.value = ''"
     required
     minlength="4"
-    class="bg-[#e0e0e0] placeholder:italic px-2 py-2 rounded-t-[10px] border border-slate-300 focus:outline-none focus:border-primary hover:border-primary max-w-[20rem] w-[90%] rounded-[10px]"
+    class="bg-secondary text-textPrimary placeholder:italic px-2 py-2 rounded-t-[10px] border-2 border-secondary focus:outline-none focus:border-primary hover:border-primary w-[20rem] rounded-[10px]"
   />
 </div>
