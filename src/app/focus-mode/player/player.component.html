@@ -1,28 +1,26 @@
-<div class="bg-secondary w-[20rem] rounded-[10px] text-textPrimary p-3">
+<div
+  class="bg-secondary sm:w-[20rem] w-full rounded-[10px] text-textPrimary p-3"
+>
   <div class="flex justify-between mb-3 text-xl font-[500]">
     <p>Player</p>
   </div>
 
   <div class="flex gap-3 underline-offset-8">
     <button
-      (click)="musicService.playerType = 'lofi'"
+      (click)="musicService.changePlayerType('lofi')"
       [ngClass]="{ activePlayer: musicService.playerType === 'lofi' }"
     >
       Lofi
     </button>
     <button
-      (click)="musicService.playerType = 'anime'"
-      [ngClass]="{ activePlayer: musicService.playerType === 'anime' }"
-      disabled
-      class="cursor-not-allowed"
+      (click)="musicService.changePlayerType('jazz')"
+      [ngClass]="{ activePlayer: musicService.playerType === 'jazz' }"
     >
-      Anime
+      Jazz
     </button>
     <button
-      (click)="musicService.playerType = 'ambient'"
+      (click)="musicService.changePlayerType('ambient')"
       [ngClass]="{ activePlayer: musicService.playerType === 'ambient' }"
-      disabled
-      class="cursor-not-allowed"
     >
       Ambient
     </button>

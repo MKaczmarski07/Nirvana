@@ -4,7 +4,7 @@ import { Injectable, OnInit } from '@angular/core';
   providedIn: 'root',
 })
 export class MusicService {
-  playerType: 'lofi' | 'anime' | 'ambient' = 'lofi';
+  playerType: 'lofi' | 'jazz' | 'ambient' = 'lofi';
   isMusicPlaying = false;
   audio = new Audio();
   isPaused = false;
@@ -34,10 +34,10 @@ export class MusicService {
     fetch('../assets/music/music-data.json')
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        // assign information depending on the selected index in the music array
-        this.music = data.music[this.musicIndex];
-        this.lengthOfPlaylist = data.music.length;
+        console.log(data.lofi[this.musicIndex]);
+        // assign information depending on the player type and index
+        this.music = data[this.playerType][this.musicIndex];
+        this.lengthOfPlaylist = data[this.playerType].length;
         this.musicFilePath = this.music.path;
         this.musicTitle = this.music.title;
         this.musicArtist = this.music.artist;
@@ -93,5 +93,14 @@ export class MusicService {
     }
     this.musicIndex--;
     this.getData();
+  }
+
+  changePlayerType(playerType: 'lofi' | 'jazz' | 'ambient') {
+    if (this.playerType === playerType) return;
+    this.playerType = playerType;
+    this.musicIndex = 0;
+    this.isMusicPlaying = false;
+    this.getData();
+    this.playSound();
   }
 }

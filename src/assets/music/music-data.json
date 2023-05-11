@@ -1,31 +1,63 @@
 {
-    "music": [
-      {
-        "title": "WatR - Fluid",
-        "artist": "ItsWatR",
-        "path": "../../../assets/music/lofi/watr-fluid-10149.mp3"
-      },
-      {
-        "title": "Radar",
-        "artist": "Chillmore",
-        "path": "../../../assets/music/lofi/radar-142575.mp3"
-      },
-      {
-        "title": "Empty mind",
-        "artist": "Lofi hour",
-        "path": "../../../assets/music/lofi/empty-mind-118973.mp3"
-      },
-      {
-        "title": "The Garden of Bliss",
-        "artist": "Chillmore",
-        "path": "../../../assets/music/lofi/the-garden-of-bliss-142579.mp3"
-      },
-      {
-        "title": "Beyond Equations",
-        "artist": "RomanSenykMusic",
-        "path": "../../../assets/music/lofi/beyond-equations-141460.mp3"
-      }
-
-    ]
-  }
-  
+  "lofi": [
+    {
+      "title": "Fluid",
+      "artist": "ItsWatR",
+      "path": "../../../assets/music/musicFiles/watr-fluid-10149.mp3"
+    },
+    {
+      "title": "Radar",
+      "artist": "Chillmore",
+      "path": "../../../assets/music/musicFiles/radar-142575.mp3"
+    },
+    {
+      "title": "Empty mind",
+      "artist": "Lofi hour",
+      "path": "../../../assets/music/musicFiles/empty-mind-118973.mp3"
+    },
+    {
+      "title": "The Garden of Bliss",
+      "artist": "Chillmore",
+      "path": "../../../assets/music/musicFiles/the-garden-of-bliss-142579.mp3"
+    },
+    {
+      "title": "Beyond Equations",
+      "artist": "RomanSenykMusic",
+      "path": "../../../assets/music/musicFiles/beyond-equations-141460.mp3"
+    }
+  ],
+  "jazz": [
+    {
+      "title": "Night Jazz",
+      "artist": "Music_For_Videos",
+      "path": "../../../assets/music/musicFiles/night-jazz-111372.mp3"
+    },
+    {
+      "title": "A Jazz Piano",
+      "artist": "Music_For_Videos",
+      "path": "../../../assets/music/musicFiles/a-jazz-piano-110481.mp3"
+    },
+    {
+      "title": "Restaurant Music",
+      "artist": "Music_For_Videos",
+      "path": "../../../assets/music/musicFiles/restaurant-music-110483.mp3"
+    }
+  ],
+  "ambient": [
+    {
+      "title": "Reflected Light",
+      "artist": "SergePavkinMusic",
+      "path": "../../../assets/music/musicFiles/reflected-light-147979.mp3"
+    },
+    {
+      "title": "The Introvert ",
+      "artist": "Michael Kobrin",
+      "path": "../../../assets/music/musicFiles/the-introvert-michael-kobrin-10959.mp3"
+    },
+    {
+      "title": "Mountain Path",
+      "artist": "Magnetic_Trailer",
+      "path": "../../../assets/music/musicFiles/mountain-path-125573.mp3"
+    }
+  ]
+}

@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
     this.allTasks = this.userDataService.getNumberOfTasks();
     this.completedTasks = this.userDataService.getNumberOfCompletedTasks();
     this.toDoTasks = this.allTasks - this.completedTasks;
+    // prevent from dividing by 0
     if (this.allTasks !== 0) {
       this.completedTasksPercentage = Math.round(
         (this.completedTasks / this.allTasks) * 100
@@ -31,6 +32,7 @@ export class DashboardComponent implements OnInit {
   }
 
   SetchartData() {
+    // prevent from not displaying chart when there is no data
     if (this.toDoTasks === 0 && this.completedTasks === 0) {
       return [1, 0];
     }

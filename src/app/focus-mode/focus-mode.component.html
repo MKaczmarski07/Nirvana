@@ -1,28 +1,26 @@
-<div class="h-screen relative p-3 flex flex-col justify-between boundary">
-  <div class="w-screen h-screen flex justify-center items-center">
-    <div class="flex gap-3">
-      <app-menu></app-menu>
-      <div class="flex flex-col gap-3">
-        <div class="flex gap-3">
-          <app-dashboard></app-dashboard>
-          <div class="flex flex-col sm:justify-end justify-center gap-3">
-            <app-timer class="flex justify-center"> </app-timer>
-            <app-player class="flex justify-center"></app-player>
-          </div>
+<div class="min-h-screen flex p-3 justify-center items-center">
+  <div class="flex gap-3 md:flex-row flex-col">
+    <app-menu></app-menu>
+    <div class="flex flex-col gap-3">
+      <div class="flex gap-3 flex-col sm:flex-row">
+        <app-dashboard class="mx-auto md:mx-0 w-full"></app-dashboard>
+        <div class="flex flex-col sm:justify-end justify-center gap-3">
+          <app-timer class="flex justify-center"> </app-timer>
+          <app-player class="flex justify-center"></app-player>
         </div>
-        <div
-          class="bg-secondary w-[40.75rem] h-auto p-3 rounded-[10px] text-textPrimary"
-        >
-          <div class="sm:flex justify-between hidden">
-            <p class="lg:text-xl text-lg">
-              {{ dateService.getCurrentDate() }}
-            </p>
-          </div>
-          <p class="text-white xl:text-3xl lg:text-2xl text-xl">
-            “Live your beliefs and you can turn the world around.” – Henry David
-            Thoreau
+      </div>
+      <div
+        class="bg-secondary sm:w-[40.75rem] w-full h-auto p-3 rounded-[10px] text-textPrimary"
+      >
+        <div class="flex justify-between">
+          <p class="lg:text-xl text-lg">
+            {{ dateService.getCurrentDate() }}
           </p>
         </div>
+        <p class="text-white xl:text-3xl lg:text-2xl text-xl">
+          “Live your beliefs and you can turn the world around.” – Henry David
+          Thoreau
+        </p>
       </div>
     </div>
   </div>
