@@ -11,6 +11,7 @@ export class UserDataService {
   showError = false;
   isDataValid = false;
   userTasks: Item[] = [];
+  isNameChangingPossible = false;
 
   getData() {
     const savedData = localStorage.getItem('userData');

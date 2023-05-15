@@ -1,0 +1,38 @@
+<div
+  class="absolute top-0 left-0 w-full h-full flex items-center justify-center z-20 px-6"
+>
+  <div
+    [@dialog]
+    class="bg-secondary p-6 rounded-[10px] dialog z-20 flex flex-col gap-6 items-center justify-center sm:w-auto w-full"
+  >
+    <h1 class="text-xl text-textPrimary">Change your name</h1>
+    <input
+      #name
+      type="text"
+      placeholder="New name"
+      (keyup.enter)="
+        userDataService.addName(name.value);
+        userDataService.isNameChangingPossible = false;
+        name.value = ''
+      "
+      required
+      class="bg-accent text-textPrimary placeholder:italic px-2 py-2 border-2 border-secondary focus:outline-none focus:border-primary hover:border-primary sm:w-[20rem] w-full rounded-[10px]"
+    />
+
+    <button
+      class="py-1 pr-3 pl-2 bg-accent rounded text-white flex items-center"
+      (click)="
+        userDataService.addName(name.value);
+        userDataService.isNameChangingPossible = false;
+        name.value = ''
+      "
+    >
+      Save
+    </button>
+  </div>
+
+  <div
+    [@background]
+    class="absolute top-0 left-0 w-full h-full bg-slate-900 bg-opacity-40 flex items-center justify-center z-10 backdrop-blur-sm"
+  ></div>
+</div>

@@ -10,6 +10,7 @@ export class MusicService {
   isPaused = false;
   isMuted = false;
 
+  isDataLoaded = false;
   musicIndex = 0;
   music!: any;
   musicFilePath!: string;
@@ -29,12 +30,22 @@ export class MusicService {
     this.getData();
   }
 
+  checkifDataLoaded() {
+    const checkifDataExists = setInterval(() => {
+      if (this.isDataLoaded) {
+        clearInterval(checkifDataExists);
+      }
+      this.getData();
+      console.log('checking if data exists');
+    }, 500);
+  }
+
   getData() {
     // get music data from json file
     fetch('../assets/music/music-data.json')
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.lofi[this.musicIndex]);
+        this.isDataLoaded = true;
         // assign information depending on the player type and index
         this.music = data[this.playerType][this.musicIndex];
         this.lengthOfPlaylist = data[this.playerType].length;
@@ -46,7 +57,10 @@ export class MusicService {
           this.playSound();
         }
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        this.checkifDataLoaded();
+        console.error(error);
+      });
   }
 
   playSound() {
@@ -97,10 +111,15 @@ export class MusicService {
 
   changePlayerType(playerType: 'lofi' | 'jazz' | 'ambient') {
     if (this.playerType === playerType) return;
+
     this.playerType = playerType;
     this.musicIndex = 0;
-    this.isMusicPlaying = false;
-    this.getData();
-    this.playSound();
+    if (this.isMusicPlaying) {
+      this.isMusicPlaying = false;
+      this.getData();
+      this.playSound();
+    } else {
+      this.getData();
+    }
   }
 }

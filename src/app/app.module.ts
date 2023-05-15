@@ -22,7 +22,7 @@ import { GetNameComponent } from './get-name/get-name.component';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './firebase';
 import { DashboardComponent } from './focus-mode/dashboard/dashboard.component';
-import { ChangeNameComponent } from './change-name/change-name.component';
+import { ChangeNameComponent } from './focus-mode/change-name/change-name.component';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
