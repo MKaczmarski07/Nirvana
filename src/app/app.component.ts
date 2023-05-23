@@ -16,7 +16,7 @@ import { UserDataService } from './user-data.service';
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('routeAnimations', [
-      transition('0 => 1, 0 => 2, 1 => 2', [
+      transition('0 => 1, 0 => 2', [
         style({
           //on parent component
           height: '!', //height as at the end of the animation from the beginning
@@ -64,7 +64,7 @@ import { UserDataService } from './user-data.service';
         ]),
       ]),
 
-      transition('2 => 1, 2 => 0, 1 => 0', [
+      transition('2 => 0, 1 => 0', [
         style({
           height: '!',
           position: 'relative',
@@ -114,7 +114,6 @@ import { UserDataService } from './user-data.service';
         style({ opacity: 0 }),
         animate('300ms ease-in', style({ opacity: 1 })),
       ]),
-      transition(':leave', [animate('300ms ease-out', style({ opacity: 0 }))]),
     ]),
   ],
 })
