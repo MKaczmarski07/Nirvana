@@ -1,14 +1,14 @@
-<div class="bg-background w-screen min-h-screen overflow-x-hidden">
+<div class="bg-background w-screen min-h-[100svh] overflow-x-hidden">
   <app-get-name
     [@toggleVisibility]
-    class="w-full h-screen flex items-center"
+    class="w-full h-[100svh] flex items-center"
     *ngIf="UserDataService.userName === ''"
   ></app-get-name>
 
   <div
     [@toggleVisibility]
     *ngIf="UserDataService.userName !== ''"
-    class="flex h-screen max-h-screen justify-between"
+    class="flex h-[100svh] justify-between"
   >
     <main class="w-full" [@routeAnimations]="prepareRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>

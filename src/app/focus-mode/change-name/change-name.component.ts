@@ -87,4 +87,11 @@ export class ChangeNameComponent {
       }
     }
   }
+
+  @HostListener('document:wheel', ['$event']) //Close the dialog when scrolling
+  onScroll() {
+    if (this.userDataService.isNameChangingPossible) {
+      this.userDataService.isNameChangingPossible = false;
+    }
+  }
 }

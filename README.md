@@ -1,7 +1,5 @@
 # Nirvana - Productivity Assistant
 
-⚠️ The application interface is currently under reconstruction, the development and live versions may differ significantly
-
 ## Live example 🌐
 
 https://nirvana-cf5b9.web.app
