@@ -18,6 +18,13 @@ export class DashboardComponent implements OnInit {
   completedTasksPercentage = 0;
   chartDestroyed = false;
 
+  ngOnInit() {
+    this.userDataService.getTasks();
+    this.setValues();
+    this.canvas = document.getElementById('myChart');
+    this.createChart();
+  }
+
   setValues() {
     this.allTasks = this.userDataService.getNumberOfTasks();
     this.completedTasks = this.userDataService.getNumberOfCompletedTasks();
@@ -70,12 +77,5 @@ export class DashboardComponent implements OnInit {
         events: [], // Disable all events on chart - chart is static
       },
     });
-  }
-
-  ngOnInit() {
-    this.userDataService.getTasks();
-    this.setValues();
-    this.canvas = document.getElementById('myChart');
-    this.createChart();
   }
 }

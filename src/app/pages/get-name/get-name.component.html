@@ -3,17 +3,19 @@
 >
   <img
     src="../../assets/Images/Nirvana.svg"
-    class="w-[20vh] max-w-[20rem] h-auto"
+    alt="Nirvana"
+    width="100px"
+    height="100px"
+    class="h-auto mb-6"
   />
-  <h1 class="text-4xl text-primary font-[500] mb-6">Nirvana</h1>
   <h2 *ngIf="!userDataService.showError" class="text-xl text-textPrimary">
     What's your name?
   </h2>
   <h2
     *ngIf="userDataService.showError"
-    class="text-xl text-red-700 text-center"
+    class="text-xl text-[#e12b2b] text-center"
   >
-    This field should contain at least one letter
+    This field cannot be empty
   </h2>
   <input
     #name
@@ -21,6 +23,12 @@
     placeholder="Name"
     (keyup.enter)="userDataService.addName(name.value); name.value = ''"
     required
-    class="bg-secondary text-textPrimary placeholder:italic px-2 py-2 rounded-t-[10px] border-2 border-secondary focus:outline-none focus:border-primary hover:border-primary w-[20rem] rounded-[10px]"
+    class="bg-secondary text-textPrimary placeholder:italic px-2 py-2 border-2 border-secondary focus:outline-none focus:border-primary hover:border-primary w-[20rem] rounded-[10px]"
   />
+  <button
+    class="rounded-[10px] w-full py-2 px-3 bg-accent text-white flex items-center justify-center"
+    (click)="userDataService.addName(name.value); name.value = ''"
+  >
+    Save
+  </button>
 </div>

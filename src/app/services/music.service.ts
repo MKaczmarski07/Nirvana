@@ -14,8 +14,8 @@ export class MusicService {
   musicIndex = 0;
   music!: any;
   musicFilePath!: string;
-  musicArtist!: string;
-  musicTitle!: string;
+  musicArtist: string = 'Loading...';
+  musicTitle: string = 'Loading...';
   lengthOfPlaylist!: number;
   volume = 1;
 

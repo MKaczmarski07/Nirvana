@@ -6,16 +6,18 @@ https://nirvana.kaczmarski.dev
 
 ## About ✍️
 
-The main goal is to make an all-in-one productivity application, designed to help users effectively manage their daily tasks, take notes and focus. With its intuitive interface and a comprehensive set of features, this application will simplify the process of organizing daily routine and achieving goals.
+A CRUD application that I made while learning the basics of Angular.
+The main goal was to make an all-in-one productivity application, designed to help users effectively manage their daily tasks, take notes and focus.
 
 ## Features 📋
 
-**Main dashboard - a place to focus**
+**Main dashboard**
 
 ![home](./src/assets/Images/Mockup/home.webp)
 
 - Lofi music player
 - Pomodoro productivity timmer
+- Progress chart
 
 **Task list**
 
@@ -39,7 +41,6 @@ The main goal is to make an all-in-one productivity application, designed to hel
 ### Main architecture
 
 - Application is based on Angular 15. Navigation is handled using built-in **RouterModule**. To facilitate communication between components I have used Angular's **EventEmitters**, @Input/@Output decorators and custom **Services**.
-- **Two-way data binding** is handled using Angular's FormsModule.
 - UI is mainly done with the **TailwindCSS** framework and vanilla CSS.
 
 ### How data is stored?
@@ -51,7 +52,7 @@ The main goal is to make an all-in-one productivity application, designed to hel
 - Music files are stored locally.
 - Song related information such as title and artist are stored in a **JSON file**
 - Data from JSON is fetched using the **Fetch Api**.
-- The player works based on the native **HTMLAudioElement**.
+- The player's core is the native **HTMLAudioElement**.
 
 ## Installation Guide ⚙️
 
@@ -82,7 +83,7 @@ Your application is ready at port 4200.
 
 - The application is publicly available under the MIT license.
 - The project is educational and is not used for commercial purposes.
-- Music was taken from https://pixabay.com and is not mine. To honor the authors, my music player also displays the artist name.
+- Music was taken from https://pixabay.com as royalty free and is not mine.
 
 ## Special thanks 🙏🏽
 
