@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { CustomDateService } from '../date.service';
-import { EmptyNoteService } from '../empty-note.service';
-import { UserDataService } from '../user-data.service';
-import { Note } from '../notepad/note';
+import { CustomDateService } from '../../services/date.service';
+import { EmptyNoteService } from '../../services/empty-note.service';
+import { UserDataService } from '../../services/user-data.service';
+import { Note } from '../../models/note';
 
 @Component({
   selector: 'app-notepad',

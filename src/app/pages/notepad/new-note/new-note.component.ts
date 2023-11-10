@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { CustomDateService } from 'src/app/date.service';
-import { Note } from '../note';
+import { CustomDateService } from 'src/app/services/date.service';
+import { Note } from '../../../models/note';
 
 @Component({
   selector: 'app-new-note',

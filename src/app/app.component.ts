@@ -8,7 +8,7 @@ import {
   group,
   animate,
 } from '@angular/animations';
-import { UserDataService } from './user-data.service';
+import { UserDataService } from './services/user-data.service';
 
 @Component({
   selector: 'app-root',

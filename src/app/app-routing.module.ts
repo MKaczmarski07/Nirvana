@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FocusModeComponent } from './focus-mode/focus-mode.component';
-import { NotepadComponent } from './notepad/notepad.component';
-import { TodoComponent } from './todo/todo.component';
+import { FocusModeComponent } from './pages/home/home.component';
+import { NotepadComponent } from './pages/notepad/notepad.component';
+import { TodoComponent } from './pages/todo/todo.component';
 
 const routes: Routes = [
   { path: '', component: FocusModeComponent, data: { order: 0 } },

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Item } from './item';
-import { CustomDateService } from '../date.service';
-import { UserDataService } from '../user-data.service';
+import { Item } from '../../models/item';
+import { CustomDateService } from '../../services/date.service';
+import { UserDataService } from '../../services/user-data.service';
 
 @Component({
   selector: 'app-todo',

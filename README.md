@@ -2,7 +2,7 @@
 
 ## Live example 🌐
 
-https://nirvana-cf5b9.web.app
+https://nirvana.kaczmarski.dev
 
 ## About ✍️
 

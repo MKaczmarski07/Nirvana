@@ -1,11 +1,5 @@
-import {
-  Component,
-  HostListener,
-  Output,
-  Input,
-  EventEmitter,
-} from '@angular/core';
-import { UserDataService } from 'src/app/user-data.service';
+import { Component, HostListener } from '@angular/core';
+import { UserDataService } from 'src/app/services/user-data.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({

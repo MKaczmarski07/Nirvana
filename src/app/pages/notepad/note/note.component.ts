@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
-import { Note } from '../note';
-import { CustomDateService } from 'src/app/date.service';
-import { EmptyNoteService } from 'src/app/empty-note.service';
+import { Note } from '../../../models/note';
+import { CustomDateService } from 'src/app/services/date.service';
+import { EmptyNoteService } from 'src/app/services/empty-note.service';
 import { ConfirmDeletionComponent } from './confirm-deletion/confirm-deletion.component';
 
 @Component({
